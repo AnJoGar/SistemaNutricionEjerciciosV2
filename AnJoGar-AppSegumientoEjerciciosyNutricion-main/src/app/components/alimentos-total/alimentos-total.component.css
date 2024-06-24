@@ -1,0 +1,69 @@
+.container{
+    display:flexbox;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 40px;
+    width: 90%;
+}
+h1{
+    font-size: 2.5em; /* Tamaño grande para un título impactante */
+      color: #333; /* Color de texto oscuro para una buena legibilidad */
+      text-transform: capitalize; /* Convierte la primera letra de cada palabra en mayúscula */
+      margin: 20px auto; /* Margen superior e inferior, y centrado horizontal */
+      padding: 10px; /* Espaciado interior para separación del borde */
+      background-color: #f8f8f8; /* Fondo gris claro para un aspecto profesional */
+      border-bottom: 2px solid #ddd; /* Borde sólido en la parte inferior */
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente comúnmente utilizada en entornos profesionales */
+      width: 90%; /* Tamaño del 90% del contenedor padre */
+  }
+
+.example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  mat-form-field {
+    margin-right: 12px;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+  .example-card {
+    margin-left: 200px;
+ width: 50%;
+  }
+  
+  .example-header-image {
+
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos-vectores-gratis%2Freducir-consumo-agua&psig=AOvVaw0mkNeXXyjWx-bogp8neC6g&ust=1717790414211000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIjVjI7ix4YDFQAAAAAdAAAAABAE');
+    background-size: cover;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th.mat-header-cell,
+  td.mat-cell {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    text-align: center;
+    padding: 12px;
+  }
+  
+  tr.mat-header-row {
+    background-color: #f0f0f0;
+  }
+  
+  tr.mat-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  

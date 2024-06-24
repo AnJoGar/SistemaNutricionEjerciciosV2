@@ -1,0 +1,461 @@
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /* background-color: #2c3e50; */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-top: -2%;
+    margin-bottom: -2%;
+  }
+  
+  .logo img {
+    max-width: 15%;
+    max-height: 15%;
+    margin-right: -2.5%;
+    margin-left: -3%;
+  }
+  
+  .aplicacion-info {
+    color: rgb(87, 160, 204);
+    font-family: 'Bebas Neue Pro', sans-serif;
+    font-weight: bold;
+    line-height: 0.7;
+    font-size: 3em;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tituloaplicacion_2 {
+    /* font-size: 1.8em; */
+    color: rgb(87, 160, 204);
+  }
+  
+ .pestanas-section {
+    background-color: rgb(70, 130, 180);
+    overflow: hidden;
+  }
+  
+  .pestanas {
+    display: flex;
+  }
+  
+  .pestanas a {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Bebas Neue Pro', sans-serif;
+  }
+  
+  .pestanas a:hover {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  .pestanas a.active {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  /* FOOTER */
+  .footer {
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* background-color: #2c3e50; */
+    color: #ecf0f1;
+  }
+  
+  .footer p {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .resumen-diario {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.resumen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px;
+}
+
+.resumen-header h2 {
+    margin: 0;
+    font-family: 'Bebas Neue Pro', sans-serif;
+}
+.blue-background {
+    background-color: 
+    #29467D !important;
+   color: white;
+}
+.tabla{
+    margin-right:  30%;
+    margin-left:  30%;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    background-color: white;
+    
+    
+
+}
+.tabla1{
+    margin-right:  30%;
+    margin-left:  30%;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    background-color: white;
+    
+    
+
+}
+.example-button-row{
+
+margin-bottom: 50px;
+margin-left: 8%;
+
+
+}
+.nombre-header {
+   
+    color:   rgb(0, 31, 63);
+   font-size: 2em;
+
+}
+.nombre-header1 {
+   
+  color:   rgb(0, 31, 63);
+ font-size: 2em;
+
+}
+
+.total-row {
+    background-color: #f2f2f2; /* Cambia el color de fondo según tu preferencia */
+    font-weight: bold; /* Para resaltar los totales */
+  }
+  
+
+.tablaInterno{
+
+  background: white;
+color:black;
+margin-bottom: 0;
+
+
+
+}
+.tablaInterno01{
+
+  background: #EAF0EA;
+color:black;
+margin-bottom: 0;
+
+
+
+}
+.tablaInterno1{
+width: 10%;
+  background: #DCE2DC;
+  color:black;
+  margin-bottom: 0;
+  
+  
+  
+  }
+.filas{
+
+    color: black;
+    
+}
+
+.blue-background {
+    background-color: blue;
+    color: white;
+  }
+  
+  .header-with-divider {
+    position: relative;
+  }
+  
+  .header-with-divider::before {
+    content: '';
+    position: absolute;
+    left: -10px; /* Ajusta esta posición según sea necesario */
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: black; /* Cambia el color según sea necesario */
+  }
+  .blue-background {
+    background-color: rgb(0, 31, 63);
+    color: white;
+  }
+
+  .blue-background1{
+
+    border-right: 1px solid white;
+
+
+  }
+  
+  .divider {
+    width: 1px;
+    background-color: black; /* Color de la línea */
+    padding: 0;
+  }
+
+  .header-border-right {
+    border-right: 1px solid #000; /* Puedes ajustar el color y el grosor según tus necesidades */
+  }
+  .minutos-header {
+    border-right: 1px solid white;
+    text-align: center;
+  }
+  .minutos-header1 {
+    border-right: 1px solid white;
+    text-align: center;
+    padding-left: 1px
+  }
+  .minutos-cell {
+   
+    border-right: 1px solid white;
+    
+  }
+
+  .example-button-row1{
+    margin-top: 10px;
+    margin-left: 1%;
+    background-color: white;
+    color:#11598B;
+    
+    
+    }
+    
+    .tabla12{
+        
+      margin-left: 37%;
+      background-color: white;
+      margin-bottom: 100px;
+      margin-top: 100px;
+      color: black;
+      margin-right: 50px;
+      text-align: center ;
+      width: 49%;
+
+      
+    }
+    .tabla123{
+        
+      margin-left: 42%;
+      background-color: white;
+      margin-bottom: 100px;
+      margin-top: 10px;
+      color: black;
+      margin-right: 50px;
+      text-align: center ;
+      width: 52%;
+
+      
+    }
+    .example-button-row1 + .tabla12 {
+      margin-top: 0; /* Remove top margin if there is any */
+    }
+    .filas1{
+      color: black;
+      text-align: center;
+    }
+    .calorias-cell {
+      text-align: center; /* Centrar horizontalmente el contenido */
+  }
+    .minutos-cell {
+      text-align: center; 
+   
+  }
+
+  .minutos-cell0{
+
+    
+    margin-top: 14px;
+    left: 9%;
+    position: relative;
+
+  }
+  .minutos-cell1 {
+    
+    margin-top: 14px;
+    left: 19%;
+    
+   
+   
+}
+
+  
+  /* Opcional: para centrar también verticalmente */
+  .mat-cell, .mat-footer-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .series-tabla123{
+    
+    left: 2%;
+    position: relative;
+  }
+  .calorias-tabla12{
+    
+    left: 33%;
+    position: relative;
+  }
+  .repeticiones-tabla123{
+    
+    left: 9%;
+    position: relative;
+  }
+  .peso-tabla123{
+    
+    left: -2%;
+  position:relative;
+  }
+  
+  
+  .total{
+  text-align:center;
+ 
+  }
+
+  .tabla {
+    /* Estilos para la tabla dentro de la sección */
+    width: 60%; /* Ajusta el ancho al 100% del contenedor padre */
+    height: 70%;
+ /* Ajusta la altura al 100% del contenedor padre */
+  }
+  
+  .tabla1 {
+    /* Estilos para la tabla dentro de la sección */
+    width: 60%; /* Ajusta el ancho al 100% del contenedor padre */
+    height: 70%;
+    
+ /* Ajusta la altura al 100% del contenedor padre */
+  }
+  
+.tablaInterno {
+    /* Estilos para las tablas internas dentro de la sección */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
+    height: 100%; /* Ajusta la altura al 100% del contenedor padre */
+  }
+
+  th, td {
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente de las celdas de la tabla */
+  }
+  button {
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente del botón */
+  }
+  .nombre-header {
+    font-size: 2em; /* Aumenta el tamaño de la fuente de los encabezados de la tabla */
+  }
+  .nombre-header1 {
+    font-size: 2em;
+    width: 54%; /* Aumenta el tamaño de la fuente de los encabezados de la tabla */
+  }
+  .minutos-header{
+font-size: 1.2em;
+
+  }
+  .contenedor {
+    width: 100%;
+    
+    margin-left: -20%;
+    /* Ajusta la altura al 100% del contenedor padre */
+     /* Ajusta este valor según cuánto quieras mover hacia la izquierda */
+  }
+  .tabla,
+  .tabla1 {
+     /* Ajusta el ancho al 100% del contenedor padre */
+    margin-bottom: 20px; /* Espacio entre tablas */
+  }
+
+  .contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -20px; /* Ajusta este valor según cuánto quieras mover hacia la izquierda */
+  }
+  .plomo-background {
+    background-color: #808080; /* Color plomo */
+    color: white; /* Color del texto */
+    width: 50px; /* Ancho deseado */
+  }
+  .fecha{
+
+    background-color: white;
+    margin-top: 1%;
+  
+    display: flex;
+   
+    margin-left: 12%;
+
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+
+
+  .fecha2{
+
+   
+    margin-bottom: 1%;
+   margin-right: 50%;
+   width: 96%;
+   
+
+
+  }
+
+
+  .labelFecha{
+    
+    width: 100%;
+
+margin-left: 17%;
+margin-top: 1%;
+font-size: 1.5em;
+
+  }
+  ::ng-deep .mat-form-field{
+
+
+    background-color: #11598B;
+  }
+  .mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input.custom-datepicker {
+    color: black !important;
+    background-color: #fff !important;
+    border-color: lightblue !important;
+  }
+  ::ng-deep .mat-datepicker-content {
+    background-color: rgb(70, 130, 180);; 
+  }
+  
+  ::ng-deep .mat-calendar {
+    background-color: rgb(70, 130, 180); 
+  }

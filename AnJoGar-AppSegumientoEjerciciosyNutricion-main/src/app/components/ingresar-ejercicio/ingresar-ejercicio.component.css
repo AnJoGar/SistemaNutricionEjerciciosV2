@@ -1,0 +1,155 @@
+* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /* background-color: #2c3e50; */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-top: -2%;
+    margin-bottom: -2%;
+  }
+  
+  .logo img {
+    max-width: 15%;
+    max-height: 15%;
+    margin-right: -2.5%;
+    margin-left: -3%;
+  }
+  
+  .aplicacion-info {
+    color: rgb(87, 160, 204);
+    font-family: 'Bebas Neue Pro', sans-serif;
+    font-weight: bold;
+    line-height: 0.7;
+    font-size: 3em;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tituloaplicacion_2 {
+    /* font-size: 1.8em; */
+    color: rgb(87, 160, 204);
+  }
+  
+ .pestanas-section {
+    background-color: rgb(70, 130, 180);
+    overflow: hidden;
+  }
+  
+  .pestanas {
+    display: flex;
+  }
+  
+  .pestanas a {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Bebas Neue Pro', sans-serif;
+  }
+  
+  .pestanas a:hover {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  .pestanas a.active {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  /* FOOTER */
+  .footer {
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* background-color: #2c3e50; */
+    color: #ecf0f1;
+  }
+  
+  .footer p {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .title{
+margin-left: 3%;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    color: #0a5282;
+    font-weight: bolder;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .input{
+
+    margin-left: 3%;
+    width: 60%;
+    width: 440px;
+  }
+  input1{
+    width: 440px;
+    border-radius: 5px;
+    padding: 8px 25px;
+    cursor: pointer;
+    border: 1px solid #408140;
+  }
+  .custom-width {
+    width: 100%; /* O el ancho que desees */
+    max-width: 600px; /* O el ancho máximo que desees */
+  }
+  
+  ::ng-deep .mat-form-field-flex {
+    width: 100%; /* Asegura que el input dentro del mat-form-field también tome el ancho completo */
+  }
+
+  .input-form {
+    display: flex;
+    align-items: center;
+  }
+  .matching{
+
+    height: 225px;
+    width: 330px;
+    background-color: #f6f6f6;
+    border: 1px solid #808080;
+    margin-left: 3%;
+  }
+  .secondary-title {
+    color: #0a5282;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 6px;
+    margin-left: 3%;
+    
+}
+.secondary-title1{
+  color: #0a5282;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+
+
+}
+.calculo{
+
+    margin-left: 40%;
+    margin-top: -15%;
+}
+.text1{
+  margin-left: 2%;
+}
+.text2{
+  margin-left: 2%;
+}

@@ -1,0 +1,88 @@
+<div class="demo-button-container">
+  <button mat-raised-button (click)="addData()" class="demo-button">
+    Add data
+  </button>
+  <button
+      mat-raised-button
+      [disabled]="!dataToDisplay.length"
+      (click)="removeData()"
+      class="demo-button">
+    Remove data
+  </button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="tabla">
+  <!-- Nombre Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    <td mat-footer-cell *matFooterCellDef>Total</td>
+  </ng-container>
+
+  <!-- Porción Column -->
+  <ng-container matColumnDef="portion">
+    <th mat-header-cell *matHeaderCellDef>Porción</th>
+    <td mat-cell *matCellDef="let element">{{element.portion}}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <!-- Cantidad Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef>Cant</th>
+    <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <!-- Gramos Column -->
+  <ng-container matColumnDef="grams">
+    <th mat-header-cell *matHeaderCellDef>Gramos</th>
+    <td mat-cell *matCellDef="let element">{{element.grams}}</td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <!-- Calorías Column -->
+  <ng-container matColumnDef="calories">
+    <th mat-header-cell *matHeaderCellDef>Calorías (kcal)</th>
+    <td mat-cell *matCellDef="let element">{{element.calories}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.calories}}</td>
+  </ng-container>
+
+  <!-- Carbohidratos Column -->
+  <ng-container matColumnDef="carbohydrates">
+    <th mat-header-cell *matHeaderCellDef>Carbohidratos (g)</th>
+    <td mat-cell *matCellDef="let element">{{element.carbohydrates}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.carbohydrates}}</td>
+  </ng-container>
+
+  <!-- Grasas Column -->
+  <ng-container matColumnDef="fats">
+    <th mat-header-cell *matHeaderCellDef>Grasas (g)</th>
+    <td mat-cell *matCellDef="let element">{{element.fats}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.fats}}</td>
+  </ng-container>
+
+  <!-- Proteínas Column -->
+  <ng-container matColumnDef="proteins">
+    <th mat-header-cell *matHeaderCellDef>Proteínas (g)</th>
+    <td mat-cell *matCellDef="let element">{{element.proteins}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.proteins}}</td>
+  </ng-container>
+
+  <!-- Sodio Column -->
+  <ng-container matColumnDef="sodium">
+    <th mat-header-cell *matHeaderCellDef>Sodio (mg)</th>
+    <td mat-cell *matCellDef="let element">{{element.sodium}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.sodium}}</td>
+  </ng-container>
+
+  <!-- Azúcar Column -->
+  <ng-container matColumnDef="sugar">
+    <th mat-header-cell *matHeaderCellDef>Azúcar (g)</th>
+    <td mat-cell *matCellDef="let element">{{element.sugar}}</td>
+    <td mat-footer-cell *matFooterCellDef>{{totals.sugar}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>

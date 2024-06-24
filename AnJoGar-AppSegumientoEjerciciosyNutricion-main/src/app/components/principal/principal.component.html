@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <title>Seguimiento de ejercicio y nutrición</title>
+    <meta charset="UTF-8"> -->
+  </head>
+
+  <!-- HEADER -->
+  <header class="mat-elevation-z3" style="background-color: rgb(0, 31, 63)">
+    <div class="logo">
+      <img src="assets/fittechlogo.png" alt="Logo de la aplicación">
+      <div class="aplicacion-info">
+        <div class="tituloaplicacion_1">
+          <p>Sistema de seguimiento y nutrición</p>
+        </div>
+        <div class="tituloaplicacion_2">
+          <p>FitTech Genius</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+    <!-- BODY -->
+  <body>
+    <!-- Pestañas -->
+    <section class="pestanas-section">
+      <div class="pestanas">
+        <a id="paginaPrincipalLink" (click)="navigateTo('/PaginaPrincipal')">Página principal</a>
+        <a id="alimentosLink" (click)="navigateTo('/Alimentos')">Alimentos</a>
+        <a id="ejercicioLink" (click)="navigateTo('/Ejercicio')">Ejercicios</a>
+        <a id="perfilLink" (click)="navigateTo('/Perfil')">Perfil</a>
+      </div>
+    </section>
+
+    <!-- Resumen diario -->
+    <div class="resumen-diario">
+      <div class="resumen-header">
+          <h2>Resumen diario</h2>
+          <!-- <div class="dia-consecutivo">
+              <p>3<small> DÍA CONSECUTIVO</small></p>
+          </div> -->
+      </div>
+      <div class="resumen-contenido">
+          <div class="calorias-y-acciones">
+              <div class="calorias">
+                  <!-- <span class="calorias-restantes">Calorías restantes <a href="#" class="cambiar-calorias">Cambiar</a>:</span> -->
+                  <span class="calorias-restantes">Calorías restantes</span>
+                  <div class="calorias-numero">2322</div>
+              </div>
+              <div class="acciones">
+                  <button mat-raised-button color="primary" (click)="Alimento()">Añadir Alimento</button>
+                  <button mat-raised-button color="primary" (click)="Ingresar()">Añadir Ejercicio</button>
+              </div>
+          </div>
+          <div class="objetivo">
+      <div class="objetivo-item">
+          <span class="item-descripcion">OBJETIVO</span>
+          <span class="item-nombre__">2322</span>
+      </div>
+      <div class="divider"></div>
+      <div class="objetivo-item">
+          <span class="item-descripcion">ALIMENTOS</span>
+          <span class="item-nombre">0</span>
+      </div>
+      <div class="signo">-</div>
+      <div class="objetivo-item">
+          <span class="item-descripcion">EJERCICIO</span>
+          <span class="item-nombre">0</span>
+      </div>
+      <div class="signo">=</div>
+      <div class="objetivo-item">
+          <span class="item-descripcion">NETO</span>
+          <span class="item-nombre">0</span>
+      </div>
+    </div>
+          <div class="progreso">
+              <mat-progress-bar mode="determinate" value="20" style=""></mat-progress-bar>
+          </div>
+      </div>
+    </div>
+    
+    <div id="overlay">
+      <!-- Card de cuestionario -->
+      <div class="card" id="card1"> 
+        <h3>Cuestionario Inicial</h3>
+        <form id="questionnaireForm">
+          <div class="question">
+            <p>¿Usted ha realizado actividad física previamente?</p>
+            <label><input type="radio" name="actividadFisica" value="No, nunca lo he hecho"> No, nunca lo he hecho</label><br>
+            <label><input type="radio" name="actividadFisica" value="Lo he hecho muy poco"> Lo he hecho muy poco</label><br>
+            <label><input type="radio" name="actividadFisica" value="Si, antes entrenaba constantemente"> Si, antes entrenaba constantemente</label><br>
+            <label><input type="radio" name="actividadFisica" value="Si, entreno constantemente"> Si, entreno constantemente</label>
+          </div>
+    
+          <div class="question">
+            <p>¿Cuáles son los motivos que lo han restringido de realizar actividad física?</p>
+            <label><input type="radio" name="motivos" value="Falta de tiempo"> Falta de tiempo</label><br>
+            <label><input type="radio" name="motivos" value="Falta de motivación"> Falta de motivación</label><br>
+            <label><input type="radio" name="motivos" value="Desconocimiento"> Desconocimiento</label><br>
+            <label><input type="radio" name="motivos" value="No hay motivos, me mantengo en constante entrenamiento"> No hay motivos, me mantengo en constante entrenamiento</label>
+          </div>
+    
+          <div class="question">
+            <p>¿Sabe como mantener un control de sus alimentos?</p>
+            <label><input type="radio" name="controlAlimentos" value="No, no sabría como organizarlos"> No, no sabría como organizarlos</label><br>
+            <label><input type="radio" name="controlAlimentos" value="Tengo una ligera noción"> Tengo una ligera noción</label><br>
+            <label><input type="radio" name="controlAlimentos" value="Si, antes lo controlaba frecuentemente"> Si, antes lo controlaba frecuentemente</label><br>
+            <label><input type="radio" name="controlAlimentos" value="Si, controlo mi alimentación frecuentemente"> Si, controlo mi alimentación frecuentemente</label>
+          </div>
+    
+          <div class="question">
+            <p>¿Ha utilizado previamente aplicaciones de seguimiento de ejercicio y nutrición?</p>
+            <label><input type="radio" name="usoApps" value="No, nunca las he usado"> No, nunca las he usado</label><br>
+            <label><input type="radio" name="usoApps" value="He averiguado sobre nutrición y ejercicio, pero no he usado una app"> He averiguado sobre nutrición y ejercicio, pero no he usado una app</label><br>
+            <label><input type="radio" name="usoApps" value="Sí, alguna vez he usado alguna"> Sí, alguna vez he usado alguna</label><br>
+            <label><input type="radio" name="usoApps" value="Si, actualmente utilizo alguna"> Si, actualmente utilizo alguna</label>
+          </div>
+          <button type="button" (click)="showNextCard(2)">Siguiente</button>
+        </form>
+      </div>
+
+    <!-- Card de datos personales -->
+    <div class="card" id="card2" style="display: none;">
+      <h3>Datos Personales</h3>
+      <form id="personalDataForm">
+        <div class="question">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+      
+        <div class="question">
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" required>
+        </div>
+      
+        <div class="question">
+          <label for="edad">Edad:</label>
+          <input type="number" id="edad" name="edad" required>
+        </div>
+    
+        <div class="question">
+          <label for="genero">Género:</label>
+          <select id="genero" name="genero" required (change)="onGeneroChange()">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+      
+        <div class="question">
+          <label for="altura">Altura (cm):</label>
+          <input type="number" id="altura" name="altura" required>
+        </div>
+    
+        <div class="question">
+          <label for="peso">Peso (kg):</label>
+          <input type="number" id="peso" name="peso" required>
+        </div>
+    
+        <div class="question">
+          <label for="cuello">Contorno del cuello (cm):</label>
+          <input type="number" id="cuello" name="cuello" required>
+        </div>
+    
+        <div class="question">
+          <label for="cintura">Contorno de la cintura (cm):</label>
+          <input type="number" id="cintura" name="cintura" required>
+        </div>
+      
+        <div class="question" id="caderaDiv" style="display: none;">
+          <label for="cadera">Contorno de la cadera (cm):</label>
+          <input type="number" id="cadera" name="cadera">
+        </div>
+      
+        <button type="button" (click)="calculateIMC()">Calcular IMC y % Grasa Corporal</button>
+        <button type="button" (click)="showNextCard(3)" style="display: none;" id="nextCardButton">Siguiente</button>
+      </form>
+    </div>
+
+        <!-- Card de selección -->
+        <div class="card" id="card3" style="display: none;">
+          <h3>Resultados y Objetivos</h3>
+          <div class="resultados">
+            <div class="imagenes">
+              <img src="assets/imc.png" alt="IMC" class="imc-image">
+              <img src="assets/igc.jpg" alt="Porcentaje de grasa corporal" class="grasa-image">
+            </div>
+            <div class="recomendacion" id="recomendacion">
+              <p>¡Bienvenido a nuestra app!</p>
+              <p>Esperamos que las complicacio</p>
+              <p>nes del pasado no sean una ba</p>
+              <p>rrera para alcanzar y sobrepa</p>
+              <p>sar sus nuevos objetivos. Le</p>
+              <p>recomendamos disponer de</p>
+              <p>una balanza para pesar sus</p>
+              <p>alimentos, y de una pulsera</p>
+              <p>medidora de ritmo cardiaco</p>
+              <p>para calcular las calorías</p>
+              <p>quemadas durante las sesion</p>
+              <p>es de ejercicio.</p>
+            </div>
+          </div>
+
+          <hr>
+          <h3>Sus resultados</h3>
+          <p>Su IMC es <strong>{{ userIMC }}</strong> y cae en la categoría de <strong>"{{ imcCategoria }}"</strong>.</p>
+          <p>Su porcentaje de grasa corporal es <strong>{{ userGrasa }}%</strong> y es considerado <strong>"{{ grasaCategoria }}"</strong>.</p>
+          <p class="recomendacion">Basado en estos resultados, se le recomienda que siga un plan para {{ imcCategoria === 'bajo peso' ? 'subir' : 'bajar' }} de peso.</p>
+
+          <form id="goalsForm">
+            <hr>
+            <div class="question">
+              <label>¿Cuál es su objetivo?</label><br>
+              <label><input type="radio" [(ngModel)]="objetivoActual" name="objetivo" value="perderPeso"> Perder peso</label><br>
+              <label><input type="radio" [(ngModel)]="ritmoActual" name="objetivo" value="ganarMasa"> Ganar masa corporal</label>
+            </div>
+            
+            <div class="question">
+              <label for="objetivoPeso">Peso deseado (kg):</label>
+              <input type="number" id="objetivoPeso" name="objetivoPeso" required>
+            </div>
+
+            <div class="question">
+              <label>Ritmo de cambio de peso:</label><br>
+              <label><input type="radio" name="ritmo" value="0.25"> Más/menos 0.25 kg a la semana</label><br>
+              <label><input type="radio" name="ritmo" value="0.50"> Más/menos 0.50 kg a la semana</label>
+            </div>
+        
+            <button type="button" (click)="showMainInterface()">Finalizar</button>
+            
+          </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      function showNextCard(cardNumber) {
+        document.querySelectorAll('.card').forEach(card => card.style.display = 'none');
+        document.getElementById('card' + cardNumber).style.display = 'block';
+      }
+
+      function completeQuestionnaire() {
+        alert('Cuestionario completado.');
+        document.getElementById('overlay').style.display = 'none';
+      }
+  </script>
+  </body>
+
+  <!-- FOOTER -->
+  <footer class="footer mat-elevation-z3" style="background-color: rgb(0, 31, 63);">
+    <div class="contenidoFooter">
+      <p class="mat-body-1">Copyright<small>©</small> FitTech Genius - 2024</p>
+    </div>
+  </footer>
+</html>

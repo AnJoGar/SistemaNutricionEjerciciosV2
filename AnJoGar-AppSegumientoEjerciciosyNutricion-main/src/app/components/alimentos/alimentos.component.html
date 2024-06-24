@@ -1,0 +1,61 @@
+<div class="container">
+  <header class="mat-elevation-z3" style="background-color: rgb(0, 31, 63)">
+    <div class="logo">
+      <img src="assets/fittechlogo.png" alt="Logo de la aplicación">
+      <div class="aplicacion-info">
+        <div class="tituloaplicacion_1">
+          <p>Sistema de seguimiento y nutrición</p>
+        </div>
+        <div class="tituloaplicacion_2">
+          <p>FitTech Genius</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+
+    <section class="pestanas-section">
+        <div class="pestanas">
+          <a id="paginaPrincipalLink" (click)="navigateTo('/PaginaPrincipal')">Página principal</a>
+          <a id="alimentosLink" (click)="navigateTo('/Alimentos')">Alimentos</a>
+          <a id="ejercicioLink" (click)="navigateTo('/Ejercicio')">Ejercicios</a>
+          <a id="perfilLink" (click)="navigateTo('/Perfil')">Perfil</a>
+        </div>
+      </section>
+  </div>
+  <div class="seccion" >
+    <h2> Tu registro de comidas para</h2>
+
+    <h2>
+    <nav></nav>
+    <mat-form-field>
+      <mat-label>Registro diarios</mat-label>
+      <input matInput [matDatepicker]="dp" [formControl]="date">
+      <mat-hint>Mes, Dia, Año</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
+  </h2> 
+</div>
+ <div class="seccion">
+  <div class="sec">
+     <h1>Desayuno</h1>
+     <app-alimentos-add></app-alimentos-add>
+      <h1>Almuerzo</h1>
+    <app-alimentos-add></app-alimentos-add>
+    <h1>Merienda</h1>
+    <app-alimentos-add></app-alimentos-add>
+    <h1>Aperativo</h1>
+    <app-alimentos-add></app-alimentos-add> </div>
+
+    <div class="sec2">
+      <h1>Totales</h1>  
+      <app-alimentos-total></app-alimentos-total>
+  </div>
+</div>
+ 
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Todos los derechos reservados</p>
+  </footer>
+</div>

@@ -1,0 +1,104 @@
+<header class="mat-elevation-z3" style="background-color: rgb(0, 31, 63)">
+    <div class="logo">
+      <img src="assets/fittechlogo.png" alt="Logo de la aplicación">
+      <div class="aplicacion-info">
+        <div class="tituloaplicacion_1">
+          <p>Sistema de seguimiento y nutrición</p>
+        </div>
+        <div class="tituloaplicacion_2">
+          <p>FitTech Genius</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+
+    <section class="pestanas-section">
+        <div class="pestanas">
+          <a id="paginaPrincipalLink" (click)="navigateTo('/PaginaPrincipal')">Página principal</a>
+          <a id="alimentosLink" (click)="navigateTo('/Alimentos')">Alimentos</a>
+          <a id="ejercicioLink" (click)="navigateTo('/Ejercicio')">Ejercicios</a>
+          <a id="perfilLink" (click)="navigateTo('/Perfil')">Perfil</a>
+        </div>
+      </section>
+  </div>
+
+
+
+  <div>
+<h1 class="title">Añadir</h1>
+
+  </div>
+
+  <div>
+
+
+    <form class="input" >
+        <mat-form-field class="example-full-width custom-width">
+          <mat-label>Ingrese ejercicio</mat-label>
+          <input matInput placeholder="" value="" class="input1" >
+        </mat-form-field>
+        <div>
+
+          <button mat-flat-button color="primary" style="margin-left: 107%; position: relative;margin-top: -21%;">Buscar</button>
+        </div>
+        
+      </form>
+
+      <div>
+       
+      </div>
+
+<div class="secondary-title">
+
+  <h2>Selecciona ejercicio</h2>
+</div>
+      <ul class="matching">
+
+        
+
+  </ul>
+
+
+<div class="calculo">
+
+  <h3 class="secondary-title">Añadir:</h3>
+  <p class="exercise-description"></p>
+  <p>
+  </p>
+  <div >
+    <h3 class="secondary-title inline" style="display: inline;
+    margin-left: -9%;">Series</h3>
+   <mat-form-field class="text1">
+    <mat-label>Ingrese</mat-label>
+    <input matInput placeholder="" value="" class="text" >
+  </mat-form-field>
+    <div>
+      <h3 class="secondary-title inline" style="display: inline;
+      margin-left: -9%;">Repeticiones</h3>
+      <mat-form-field class="text2">
+        <mat-label>Ingrese</mat-label>
+        <input matInput placeholder="" value="" class="text" >
+      </mat-form-field>
+  
+    </div>
+    <div>
+        <h3 class="secondary-title inline" style="display: inline;
+        margin-left: -9%;">Peso</h3>
+        <mat-form-field class="text2">
+          <mat-label>Ingrese</mat-label>
+          <input matInput placeholder="" value="" class="text" >
+        </mat-form-field>
+    
+      </div>
+    <div>
+      <button mat-flat-button color="primary" style="margin-left: 5%;">Buscar</button>
+
+    </div>
+    
+
+  </div>
+  
+</div>
+  
+  </div>

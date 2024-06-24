@@ -1,0 +1,338 @@
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    /* background-color: #2c3e50; */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-top: -2%;
+    margin-bottom: -2%;
+  }
+  
+  .logo img {
+    max-width: 15%;
+    max-height: 15%;
+    margin-right: -2.5%;
+    margin-left: -3%;
+  }
+  
+  .aplicacion-info {
+    color: rgb(87, 160, 204);
+    font-family: 'Bebas Neue Pro', sans-serif;
+    font-weight: bold;
+    line-height: 0.7;
+    font-size: 3em;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .tituloaplicacion_2 {
+    /* font-size: 1.8em; */
+    color: rgb(87, 160, 204);
+  }
+  
+ .pestanas-section {
+    background-color: rgb(70, 130, 180);
+    overflow: hidden;
+  }
+  
+  .pestanas {
+    display: flex;
+  }
+  
+  .pestanas a {
+    float: left;
+    display: block;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Bebas Neue Pro', sans-serif;
+  }
+  
+  .pestanas a:hover {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  .pestanas a.active {
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+  }
+  
+  /* FOOTER */
+  .footer {
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* background-color: #2c3e50; */
+    color: #ecf0f1;
+  }
+  
+  .footer p {
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .resumen-diario {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 70%;
+    margin: 20px auto;
+}
+
+.resumen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 31, 63);
+    color: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 10px;
+}
+
+.resumen-header h2 {
+    margin: 0;
+    font-family: 'Bebas Neue Pro', sans-serif;
+}
+
+/* .dia-consecutivo {
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.dia-consecutivo small {
+    display: block;
+    font-size: 0.6em;
+} */
+
+.resumen-contenido {
+    padding-top: 20px;
+}
+
+.calorias-y-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calorias {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.calorias-restantes {
+  font-size: 0.8em;
+  font-family: 'Bebas Neue Pro', sans-serif;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.calorias-numero {
+  font-size: 3.1em;
+  color: rgb(87, 160, 204);
+  font-weight: bold;
+  font-family: 'Bebas Neue Pro', sans-serif;
+}
+
+/* .cambiar-calorias {
+  color: blue;
+  text-decoration: none;
+} */
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.acciones button{
+  background-color:rgb(87, 160, 204);
+}
+
+.objetivo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.objetivo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divider {
+  border-left: 2px solid #ccc;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.signo {
+  font-size: 2em;
+  color: #777;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.item-nombre {
+  font-size: 1.5em;
+  color: rgb(70, 130, 180);
+  font-weight: bold;
+}
+
+.item-nombre__ {
+  font-size: 1.5em;
+  color: rgb(70, 130, 180);
+  font-weight: bold;
+}
+
+
+.item-descripcion {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.progreso {
+    margin-bottom: 20px;
+}
+
+/*CARDS*/
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+}
+
+.card h3 {
+  margin-top: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: rgb(87, 160, 204);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(70, 130, 180);
+}
+
+/*CARD 2*/
+#card2 {
+  /* display: none; */
+  /* background-color: #ffffff;  */
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px; 
+  margin: 20px 0;
+}
+
+#card2 .question {
+  margin-bottom: 15px; /* Espacio entre preguntas */
+}
+
+#card2 .question label {
+  display: block; /* Hace que el texto del label sea un bloque */
+  margin-bottom: 5px; /* Espacio entre el label y el input */
+}
+
+#card2 .question input[type="text"],
+#card2 .question input[type="number"],
+#card2 .question select {
+  width: 90%; /* Ancho del 90% */
+  padding: 10px; /* Espacio interior para el texto */
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Bordes redondeados para los inputs */
+}
+
+button {
+  background-color: rgb(87, 160, 204);
+  color: white;
+  padding: 10px 15px; /* Espacio interior del botón */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano al pasar por encima */
+  margin-top: 10px; /* Margen superior */
+}
+
+/*CARD 3*/
+
+#card3 {
+  /* display: none; */
+  overflow-y: auto;
+  max-height: 90%;
+  max-width: 37.5%;
+}
+
+.resultados {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  gap: 20px; /* Espacio entre elementos */
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.imagenes {
+  flex-basis: 60%; /* Ocupa el ancho determinado en pantallas pequeñas */
+  /* text-align: center; */
+}
+
+.imc-image,
+.grasa-image {
+  max-width: 70%; /* Asegura que las imágenes no sean más grandes que su contenedor, eso si está al 100% */
+  height: auto; /* Mantiene la proporción de las imágenes */
+}
+
+.recomendacion {
+
+  padding: 5px; /* Espacio interior más grande */
+  background-color: #f9f9f9;
+  border-left: 4px solid rgb(87, 160, 204); /* Borde lateral como indicador */
+}
+
+hr {
+  border: none; /* Elimina el borde predeterminado */
+  border-top: 4px solid rgb(87, 160, 204); /* Establece un borde superior sólido y suave */
+  margin: 20px 0; /* Añade un margen vertical para separar del contenido circundante */
+}
