@@ -30,8 +30,8 @@ namespace SistemaNutricion.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("caloriasQuemadas")
-                        .HasColumnType("real");
+                    b.Property<double>("caloriasQuemadas")
+                        .HasColumnType("float");
 
                     b.Property<string>("nombre")
                         .IsRequired()
@@ -50,14 +50,19 @@ namespace SistemaNutricion.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("CaloriasQuemadas")
-                        .HasColumnType("real");
+                    b.Property<double>("CaloriasQuemadas")
+                        .HasColumnType("float");
 
                     b.Property<int>("EjercicioId")
                         .HasColumnType("int");
 
-                    b.Property<float>("TiempoEnMinutos")
-                        .HasColumnType("real");
+                    b.Property<DateTime?>("FechaRegistro")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<double>("TiempoEnMinutos")
+                        .HasColumnType("float");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");

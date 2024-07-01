@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andjo\\source\\repos\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj": {}
+    "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andjo\\source\\repos\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj": {
+    "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andjo\\source\\repos\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj",
+        "projectUniqueName": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj",
         "projectName": "SistemaNutricion",
-        "projectPath": "C:\\Users\\andjo\\source\\repos\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj",
+        "projectPath": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\SistemaNutricion.csproj",
         "packagesPath": "C:\\Users\\andjo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andjo\\source\\repos\\SistemaNutricion\\SistemaNutricion\\obj\\",
+        "outputPath": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andjo\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
 using SistemaNutricion.DTO;
 using SistemaNutricion.Models;
 using System.Globalization;
@@ -40,32 +41,62 @@ namespace SistemaNutricion.Utilidades
 
 
             CreateMap<RegistroEjercicio, RegistroEjercicioDTO>()
-                      .ForMember(destino =>
-              destino.EjercicioDescripcion,
-              opt => opt.MapFrom(origen => origen.Ejercicio.nombre)
-          )
-                      .ForMember(destino =>
-              destino.UsuarioDescripcion,
-              opt => opt.MapFrom(origen => origen.Usuario.NombreApellidos)
-          )
-                      .ForMember(dest => dest.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas * src.TiempoEnMinutos));
 
-            ;
-
+        .ForMember(destino => destino.EjercicioDescripcion, opt => opt.MapFrom(origen => origen.Ejercicio.nombre))
+        //  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.HasValue ? src.FechaRegistro : new DateTime(2022, 12, 12)))
+        .ForMember(destino => destino.UsuarioDescripcion, opt => opt.MapFrom(origen => origen.Usuario.NombreApellidos))
+      //  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.ToString("dd/MM/yyyy")))
+        .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas * src.TiempoEnMinutos));
+       
+            //.ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas));
             CreateMap<RegistroEjercicioDTO, RegistroEjercicio>()
+                .ForMember(destino => destino.Usuario, opt => opt.Ignore())
+              //    .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro))
+  .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.CaloriasQuemadas));
 
-.ForMember(destino =>
-  destino.Ejercicio,
-  opt => opt.Ignore()
- )
-.ForMember(destino =>
-  destino.Usuario,
-  opt => opt.Ignore()
- );
             #endregion RegistroEjercicio
 
 
+
+
+
+
+            #region Reporte
+
+
+
+            CreateMap<RegistroEjercicio, CosultarFechaDTO>()
+
+     .ForMember(destino => destino.EjercicioDescripcion, opt => opt.MapFrom(origen => origen.Ejercicio.nombre))
+     //  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.HasValue ? src.FechaRegistro : new DateTime(2022, 12, 12)))
+     .ForMember(destino => destino.UsuarioDescripcion, opt => opt.MapFrom(origen => origen.Usuario.NombreApellidos))
+              .ForMember(destino =>
+            destino.FechaRegistro,
+            opt => opt.MapFrom(origen => origen.FechaRegistro.Value.ToString("dd/MM/yyyy"))
+        )
+     .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas * src.TiempoEnMinutos));
+
+            //.ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas));
+            CreateMap<CosultarFechaDTO, RegistroEjercicio>()
+                .ForMember(destino => destino.Usuario, opt => opt.Ignore())
+  //    .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro))
+//  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.ToString("dd/MM/yyyy")))
+  .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.CaloriasQuemadas));
+
+            #endregion Reporte
+
         }
 
+
+
     }
+
+
+
 }
+
+
+//.ForMember(destino => destino.FechaRegistro,
+//opt => opt.MapFrom(src => src.FechaRegistro.HasValue
+//   ? src.FechaRegistro.Value.ToString("dd/MM/yyyy HH:mm")
+// : string.Empty));

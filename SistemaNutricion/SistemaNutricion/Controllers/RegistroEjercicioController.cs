@@ -29,21 +29,33 @@ namespace SistemaNutricion.Controllers
             _registroEjercicioService = registroEjercicioService;
         }
 
+
+       
+      //  private readonly IMapper _mapper;
+
+
+
         // POST: api/RegistroEjercicios
         [HttpPost]
-        public async Task<ActionResult<RegistroEjercicioDTO>> PostRegistroEjercicio(RegistroEjercicioDTO registroEjercicioDTO)
+        public async Task<IActionResult> Guardar([FromBody] RegistroEjercicioDTO usuario)
         {
+            
+
+
+            var rsp = new Response<RegistroEjercicioDTO>();
             try
             {
-                var resultado = await _registroEjercicioService.crearRegistroEjercicio(registroEjercicioDTO);
-
-                return CreatedAtAction("GetRegistroEjercicio", new { id = resultado.Id }, resultado);
+                rsp.status = true;
+                rsp.value = await _registroEjercicioService.crearRegistroEjercicio(usuario);
             }
-            catch (TaskCanceledException ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
+            return Ok(rsp);
         }
+    
 
         [HttpGet]
         [Route("Lista")]
@@ -53,6 +65,13 @@ namespace SistemaNutricion.Controllers
             try
             {
                 rsp.status = true;
+
+
+                var listaRegistros = await _registroEjercicioService.listaRegistroEjercicio();
+
+                // Formatear manualmente la fecha en cada RegistroEjercicioDTO
+              
+
                 rsp.value = await _registroEjercicioService.listaRegistroEjercicio();
             }
             catch (Exception ex)
@@ -62,6 +81,52 @@ namespace SistemaNutricion.Controllers
             }
             return Ok(rsp);
         }
+
+
+        [HttpGet]
+        [Route("Reporte")]
+        public async Task<IActionResult> Reporte(string? fechaInicio)
+        {
+            var rsp = new Response<List<CosultarFechaDTO>>();
+            try
+            {
+                rsp.status = true;
+                rsp.value = await _registroEjercicioService.ReporteEjercicio(fechaInicio);
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+        [HttpGet]
+        [Route("Lista2")]
+        public async Task<IActionResult> ListaR()
+        {
+            var rsp = new Response<List<CosultarFechaDTO>>();
+            try
+            {
+                rsp.status = true;
+
+
+                var listaRegistros = await _registroEjercicioService.listaRegistroEjercicio2();
+
+                // Formatear manualmente la fecha en cada RegistroEjercicioDTO
+
+
+                rsp.value = await _registroEjercicioService.listaRegistroEjercicio2();
+            }
+            catch (Exception ex)
+            {
+                rsp.status = false;
+                rsp.msg = ex.Message;
+            }
+            return Ok(rsp);
+        }
+
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<RegistroEjercicioDTO>> GetById(int id)

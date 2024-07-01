@@ -18,7 +18,7 @@ namespace SistemaNutricion.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    caloriasQuemadas = table.Column<float>(type: "real", nullable: false)
+                    caloriasQuemadas = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,8 +50,9 @@ namespace SistemaNutricion.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
                     EjercicioId = table.Column<int>(type: "int", nullable: false),
-                    TiempoEnMinutos = table.Column<float>(type: "real", nullable: false),
-                    CaloriasQuemadas = table.Column<float>(type: "real", nullable: false)
+                    TiempoEnMinutos = table.Column<double>(type: "float", nullable: false),
+                    CaloriasQuemadas = table.Column<double>(type: "float", nullable: false),
+                    FechaRegistro = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {

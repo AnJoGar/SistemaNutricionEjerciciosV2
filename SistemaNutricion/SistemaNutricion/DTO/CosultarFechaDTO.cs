@@ -1,9 +1,6 @@
-﻿using SistemaNutricion.Models;
-using System.Text.Json.Serialization;
-
-namespace SistemaNutricion.DTO
+﻿namespace SistemaNutricion.DTO
 {
-    public class RegistroEjercicioDTO
+    public class CosultarFechaDTO
     {
 
         public int Id { get; set; }
@@ -11,13 +8,11 @@ namespace SistemaNutricion.DTO
         public String? UsuarioDescripcion { get; set; }
         public int? EjercicioId { get; set; }
         public String? EjercicioDescripcion { get; set; }
-       //public double? EjercicioValor { get; set; }
+        //public double? EjercicioValor { get; set; }
         public double? TiempoEnMinutos { get; set; }
         public double? CaloriasQuemadas { get; set; }
 
+        public string? FechaRegistro { get; set; }
 
-      //  [JsonPropertyName("fechaRegistro")]
-      //  public DateTime? FechaRegistro { get; set; } 
-       
     }
 }

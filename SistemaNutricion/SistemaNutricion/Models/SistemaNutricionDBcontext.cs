@@ -28,10 +28,18 @@ namespace SistemaNutricion.Models
         public DbSet<Ejercicio> Ejercicio { get; set; }
        
         public virtual DbSet<Ejercicio> Ejercicios { get; set; } = null!;
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<RegistroEjercicio>()
+                .Property(u => u.FechaRegistro)
+                .HasDefaultValueSql("GETDATE()");
+        }
         public DbSet<RegistroEjercicio> RegistroEjercicio { get; set; }
 
-        public virtual DbSet<Ejercicio> RegistroEjercicios { get; set; } = null!;
+
+        //  public virtual DbSet<Ejercicio> RegistroEjercicios { get; set; } = null!;
 
     }
 }
