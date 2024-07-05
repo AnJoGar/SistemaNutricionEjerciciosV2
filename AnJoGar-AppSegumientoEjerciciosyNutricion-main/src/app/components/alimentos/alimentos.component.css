@@ -4,158 +4,97 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  margin-top: -2%;
-  margin-bottom: -2%;
+  background-color: rgb(0, 31, 63);
+  color: white;
 }
 
 .logo img {
-  max-width: 15%;
-  max-height: 15%;
-  margin-right: -2.5%;
-  margin-left: -3%;
+  max-width: 100%; /* Asegura que el logo se ajuste al contenedor */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
 }
 
 .aplicacion-info {
-  color: rgb(87, 160, 204);
   font-family: 'Bebas Neue Pro', sans-serif;
   font-weight: bold;
-  line-height: 0.7;
-  font-size: 3em;
-  margin-top: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 1.5em;
 }
 
+/* PESTAÑAS */
 .pestanas-section {
   background-color: rgb(70, 130, 180);
-  overflow: hidden;
+  overflow: auto; /* Permite desplazamiento horizontal en caso de muchas pestañas */
 }
 
 .pestanas {
   display: flex;
+  overflow-x: auto; /* Permite desplazamiento horizontal en caso de muchas pestañas */
 }
 
 .pestanas a {
   display: block;
-  color: rgb(255, 255, 255);
+  color: white;
   font-size: 16px;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   font-family: 'Bebas Neue Pro', sans-serif;
 }
 
 .pestanas a:hover,
 .pestanas a.active {
   background-color: rgb(0, 31, 63);
-  color: #fff;
 }
 
-/* FOOTER */
-.footer {
-  width: 100%;
-  color: #ecf0f1;
-}
-
-.footer p {
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* SECCION */
+/* SECCIONES */
 .seccion {
   display: flex;
-  margin-top: 1%;
-  justify-content: center;
-
-}
-.seccion h2 {
-  display: flex;
-  align-items: center;
-  margin-top: 1%;
-  justify-content: center;
-}
-
-.sec{
-  width: 50%;
-  
-  justify-content: center;
-  padding: 2%;
-}
-
-.sec h1{
-  font-size: 2.5em; /* Tamaño grande para un título impactante */
-    color: #333; /* Color de texto oscuro para una buena legibilidad */
-    text-align: center; /* Centra el texto horizontalmente */
-    text-transform: capitalize; /* Convierte la primera letra de cada palabra en mayúscula */
-    margin: 20px auto; /* Margen superior e inferior, y centrado horizontal */
-    padding: 10px; /* Espaciado interior para separación del borde */
-    background-color: #f8f8f8; /* Fondo gris claro para un aspecto profesional */
-    border-bottom: 2px solid #ddd; /* Borde sólido en la parte inferior */
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente comúnmente utilizada en entornos profesionales */
-    width: 90%; /* Tamaño del 90% del contenedor padre */
-}
-
-.sec2{
-  width: 50%;
-  justify-content: center;
-  padding: 2%;
-}
-
-.sec2 h1{
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5em; /* Tamaño grande para un título impactante */
-  color: #ffffff; /* Color de texto oscuro para una buena legibilidad */
-  text-align: center; /* Centra el texto horizontalmente */
-  text-transform: uppercase; /* Convierte la primera letra de cada palabra en mayúscula */
-  margin: 20px 20px; /* Margen superior e inferior */
-  padding: 10px; /* Espaciado interior para separación del borde */
-  background-color: rgb(0, 31, 63);;
-  border-bottom: 2px solid #dddddd; /* Borde sólido en la parte inferior */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
-  
-}
-
-
-.mat-form-field {
-  background-color: #11598B;
-}
-
-.mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix input.custom-datepicker {
-  color: black !important;
-  background-color: #fff !important;
-  border-color: lightblue !important;
-}
-
-::ng-deep .mat-datepicker-content,
-::ng-deep .mat-calendar {
-  background-color: rgb(70, 130, 180);
-}
-
-
-/* Estilos específicos para los componentes de alimentos */
-.comida {
-  margin-bottom: 20px;
-}
-
-.comida h3 {
-  margin-bottom: 10px;
-  font-size: 1.5em;
-  color: rgb(0, 31, 63);
-}
-
-.totales {
+  flex-wrap: wrap; /* Permite que los elementos se ajusten automáticamente en filas */
+  justify-content: space-around; /* Distribución uniforme de los elementos */
   margin-top: 20px;
 }
 
-.totales h3 {
-  font-size: 1.5em;
-  color: rgb(0, 31, 63);
+.seccion h2 {
+  width: 100%;
+  text-align: center;
   margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.sec{
+  width: 60%; /* Ancho de las secciones de desayuno, almuerzo, merienda y aperitivo */
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+ .sec2 {
+  width: 35%; /* Ancho de las secciones de desayuno, almuerzo, merienda y aperitivo */
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 1%;
+  background-color: rgb(70, 130, 180);
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sec h1, .sec2 h1 {
+  font-size: 1.8em;
+  color: rgb(0, 31, 63);
+  text-align: center;
+  text-transform: capitalize;
+  margin: 1px 0;
+  padding: 1px;
+  background-color: #f8f8f8;
+  border-bottom: 0.5px solid #ddd;
+}
+
+
+/* FOOTER */
+.footer {
+  background-color: rgb(0, 31, 63);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
 }

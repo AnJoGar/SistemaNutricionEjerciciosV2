@@ -1,32 +1,44 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  overflow-x: auto; /* Asegura que la tabla sea desplazable en pantallas pequeñas */
 }
 
 .tabla {
-
   background-color: white;
-  border: 5px solid #f3f3f3;
+  border: 1px solid #e0e0e0;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  border-collapse: collapse;
   width: 90%;
+  table-layout: fixed; /* Ajusta el layout de la tabla */
 }
 
-.tabla th, .tabla td {
-  border: 0.1px solid #ddd;
-  padding: 1px;
+.mat-header-cell, .mat-cell, .mat-footer-cell {
+  flex: 1;
+  padding: 16px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
+  border-right: 1px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
-.tabla th {
+.mat-header-cell:last-child, .mat-cell:last-child, .mat-footer-cell:last-child {
+  border-right: none;
+}
+
+.mat-header-cell {
   background-color: rgb(0, 31, 63);
   color: white;
-  font-size: 12px;
+  font-weight: bold;
 }
+
+.mat-cell, .mat-footer-cell {
+  background-color: white;
+}
+
 .total {
   background-color: azure;
   color: rgb(0, 0, 0);
@@ -38,10 +50,10 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  margin-top: 20px;
 }
+
 .demo-button {
   width: 30%;
   margin: 5px;
-  justify-content: center;
 }
-
