@@ -1,6 +1,6 @@
 namespace SistemaNutricion.DTO
 {
-    public class REgistroAlimentoDTO
+    public class RegistroAlimentoDTO
     {
         public int Id { get; set; } //id de resgistro
         public string Nombre { get; set; } //nombre del alimento resgistrado
@@ -11,8 +11,7 @@ namespace SistemaNutricion.DTO
         public double Gramos { get; set; }
 
         
-        public Alimento Alimento { get; set; }
-        public Usuario Usuario { get; set; }
+       
 
     }
 }

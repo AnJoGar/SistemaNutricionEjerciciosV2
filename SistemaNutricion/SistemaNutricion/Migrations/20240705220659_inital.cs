@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SistemaNutricion.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class inital : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,6 +43,25 @@ namespace SistemaNutricion.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dasboard",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegistroEjercicioId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dasboard", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Dasboard_Ejercicio_RegistroEjercicioId",
+                        column: x => x.RegistroEjercicioId,
+                        principalTable: "Ejercicio",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RegistroEjercicio",
                 columns: table => new
                 {
@@ -72,6 +91,11 @@ namespace SistemaNutricion.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Dasboard_RegistroEjercicioId",
+                table: "Dasboard",
+                column: "RegistroEjercicioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RegistroEjercicio_EjercicioId",
                 table: "RegistroEjercicio",
                 column: "EjercicioId");
@@ -85,6 +109,9 @@ namespace SistemaNutricion.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Dasboard");
+
             migrationBuilder.DropTable(
                 name: "RegistroEjercicio");
 

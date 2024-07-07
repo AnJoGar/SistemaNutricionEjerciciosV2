@@ -6,6 +6,22 @@ using SistemaNutricion.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+using System.Linq;
+using SistemaNutricion.Repository.Contratos;
+using SistemaNutricion.Repository.Interfaces;
+using SistemaNutricion.Repository;
+using SistemaNutricion.Models;
+using SistemaNutricion.DTO;
+using Microsoft.EntityFrameworkCore;
+using BCrypt.Net;
+using System.Security.Cryptography;
+using SistemaNutricion.Utilidades;
+using AutoMapper;
 
 namespace SistemaNutricion.Controllers
 {
@@ -27,13 +43,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<RegistroAlimentoDTO>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _registroAlimentoService.CrearRegistroAlimento(registroAlimento);
+                rsp.status = true;
+                rsp.value = await _registroAlimentoService.CrearRegistroAlimento(registroAlimento);
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }
@@ -45,13 +61,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<List<RegistroAlimentoDTO>>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _registroAlimentoService.ListaRegistroAlimento();
+                rsp.status = true;
+                rsp.value = await _registroAlimentoService.ListaRegistroAlimento();
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }
@@ -63,13 +79,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<List<ConsultarFechaDTO>>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _registroAlimentoService.ReporteAlimento(fechaInicio);
+                rsp.status = true;
+                rsp.value = await _registroAlimentoService.ReporteAlimento(fechaInicio);
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }
@@ -81,13 +97,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<List<ConsultarFechaDTO>>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _registroAlimentoService.ListaRegistroAlimento2();
+                rsp.status = true;
+                rsp.value = await _registroAlimentoService.ListaRegistroAlimento2();
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }

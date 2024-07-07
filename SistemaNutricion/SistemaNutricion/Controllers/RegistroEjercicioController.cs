@@ -87,7 +87,7 @@ namespace SistemaNutricion.Controllers
         [Route("Reporte")]
         public async Task<IActionResult> Reporte(string? fechaInicio)
         {
-            var rsp = new Response<List<CosultarFechaDTO>>();
+            var rsp = new Response<List<ConsultarFechaDTO>>();
             try
             {
                 rsp.status = true;
@@ -105,7 +105,7 @@ namespace SistemaNutricion.Controllers
         [Route("Lista2")]
         public async Task<IActionResult> ListaR()
         {
-            var rsp = new Response<List<CosultarFechaDTO>>();
+            var rsp = new Response<List<ConsultarFechaDTO>>();
             try
             {
                 rsp.status = true;

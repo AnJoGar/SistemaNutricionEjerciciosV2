@@ -1,4 +1,13 @@
 
+import { MatDialog } from '@angular/material/dialog';
+import { ServiciosEjeService } from '../../../app/servicios/servicios-eje.service';
+
+import { Ejercicio } from '../../../app/interfaces/ejercicio';
+
+import { Usuario } from '../../../app/interfaces/usuario';
+
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 //import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {AfterViewInit, Component, ViewChild,OnInit} from '@angular/core';
 //import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -13,16 +22,18 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-
+import { HttpClient } from '@angular/common/http';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-
+import { provideHttpClient } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ResponseApi } from 'src/app/interfaces/response-api';
+import { HttpClientModule } from '@angular/common/http';
 export const MY_DATE_FORMATS = {
   parse: {
     dateInput: 'DD/MM/YYYY',
@@ -50,22 +61,21 @@ export const MY_DATE_FORMATS = {
     MomentDateModule,
     MatFormFieldModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule,
 
-  ],
+  
+
+  ],   
   templateUrl: './ejercicio.component.html',
   styleUrl: './ejercicio.component.css', providers: [
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
   ]
 })
 export class EjercicioComponent  implements AfterViewInit, OnInit{
+ 
 
-  ngOnInit(): void {
-
-
-
-
-  }
+  
   displayedColumns: string[] = [ 'Nombre', 'Minutos', 'Caloriasw'];
   displayedColumns1: string[] = [ 'Nombre', 'peso','series', 'repeticiones'];
   
@@ -73,7 +83,23 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   dataSource1 = new MatTableDataSource<PeriodicElement1>(ELEMENT_DATA2);
   totalMinutos: number = 0;
   totalCaloriasw: number = 0;
-  constructor(private router: Router) { }
+ 
+  constructor(private router: Router,
+    private serviciosEjeService: ServiciosEjeService,
+    private http: HttpClient
+   
+  ) {  console.log('ServiciosEjeService inyectado:', this.serviciosEjeService);}
+
+  ngOnInit(): void {
+    this.serviciosEjeService.ObtenerUsuarios().subscribe(
+      (response: ResponseApi) => {
+        console.log('Respuesta de la API:', response);
+      },
+      (error) => {
+        console.error('Error al llamar a la API:', error);
+      }
+    );
+  }
 
   navigateTo(route: string) {
     this.router.navigate([route]);
@@ -99,7 +125,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     return this.dataSource.data.map(element => element.Caloriasw).reduce((acc, value) => acc + value, 0);
   }
 
-
+ 
 
   Ingresar(){
 

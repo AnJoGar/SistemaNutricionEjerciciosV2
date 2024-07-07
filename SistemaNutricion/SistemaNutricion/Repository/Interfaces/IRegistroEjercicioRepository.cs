@@ -5,12 +5,12 @@ namespace SistemaNutricion.Repository.Interfaces
     public interface IRegistroEjercicioRepository
     {
         Task<List<RegistroEjercicioDTO>> listaRegistroEjercicio();
-        Task<List<CosultarFechaDTO>> listaRegistroEjercicio2();
+        Task<List<ConsultarFechaDTO>> listaRegistroEjercicio2();
 
         Task<RegistroEjercicioDTO> obtenerPorIdRegistroEjercicio(int id);
 
         Task<RegistroEjercicioDTO> crearRegistroEjercicio(RegistroEjercicioDTO modelo);
-        Task<List<CosultarFechaDTO>> ReporteEjercicio(string fechaInicio);
+        Task<List<ConsultarFechaDTO>> ReporteEjercicio(string fechaInicio);
 
     }
 }

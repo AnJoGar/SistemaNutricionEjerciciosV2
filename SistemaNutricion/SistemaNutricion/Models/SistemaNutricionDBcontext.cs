@@ -25,6 +25,8 @@ namespace SistemaNutricion.Models
 
         public DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
+
+
         public DbSet<Ejercicio> Ejercicio { get; set; }
        
         public virtual DbSet<Ejercicio> Ejercicios { get; set; } = null!;
@@ -37,6 +39,8 @@ namespace SistemaNutricion.Models
                 .HasDefaultValueSql("GETDATE()");
         }
         public DbSet<RegistroEjercicio> RegistroEjercicio { get; set; }
+
+        public DbSet<Dasboard> Dasboard { get; set; }
 
 
         //  public virtual DbSet<Ejercicio> RegistroEjercicios { get; set; } = null!;

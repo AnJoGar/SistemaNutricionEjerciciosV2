@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaNutricion.Repository.Implementacion
 {
+    /*
     public class AlimentoRepository : IAlimentoRepository
     {
         private readonly YourDbContext _context;
@@ -29,5 +30,5 @@ namespace SistemaNutricion.Repository.Implementacion
         {
             // Implementa tu lógica de creación de alimento aquí
         }
-    }
+    }*/
 }

@@ -65,7 +65,7 @@ namespace SistemaNutricion.Utilidades
 
 
 
-            CreateMap<RegistroEjercicio, CosultarFechaDTO>()
+            CreateMap<RegistroEjercicio, ConsultarFechaDTO>()
 
      .ForMember(destino => destino.EjercicioDescripcion, opt => opt.MapFrom(origen => origen.Ejercicio.nombre))
      //  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.HasValue ? src.FechaRegistro : new DateTime(2022, 12, 12)))
@@ -77,7 +77,7 @@ namespace SistemaNutricion.Utilidades
      .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas * src.TiempoEnMinutos));
 
             //.ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas));
-            CreateMap<CosultarFechaDTO, RegistroEjercicio>()
+            CreateMap<ConsultarFechaDTO, RegistroEjercicio>()
                 .ForMember(destino => destino.Usuario, opt => opt.Ignore())
   //    .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro))
 //  .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro.ToString("dd/MM/yyyy")))

@@ -120,7 +120,7 @@ namespace SistemaNutricion.Repository.Implementacion
             }
         }
 
-        public async Task<List<CosultarFechaDTO>> listaRegistroEjercicio2()
+        public async Task<List<ConsultarFechaDTO>> listaRegistroEjercicio2()
         {
 
             try
@@ -131,7 +131,7 @@ namespace SistemaNutricion.Repository.Implementacion
                     .Include(re => re.Usuario)
                     .ToList();
                 // Recorremos la lista de usuarios y reemplazamos el hash de la contraseña por el texto plano
-                return _mapper.Map<List<CosultarFechaDTO>>(listaEjericio);
+                return _mapper.Map<List<ConsultarFechaDTO>>(listaEjericio);
             }
             catch
             {
@@ -141,7 +141,7 @@ namespace SistemaNutricion.Repository.Implementacion
         }
 
 
-        public async Task<List<CosultarFechaDTO>> ReporteEjercicio(string fechaInicio)
+        public async Task<List<ConsultarFechaDTO>> ReporteEjercicio(string fechaInicio)
         {
             IQueryable<RegistroEjercicio> query = await _EjercicioRepositorio.Consultar();
             var listaResultado = new List<RegistroEjercicio>();
@@ -173,7 +173,7 @@ namespace SistemaNutricion.Repository.Implementacion
             {
                 throw;
             }
-            return _mapper.Map<List<CosultarFechaDTO>>(listaResultado);
+            return _mapper.Map<List<ConsultarFechaDTO>>(listaResultado);
         }
 
     }

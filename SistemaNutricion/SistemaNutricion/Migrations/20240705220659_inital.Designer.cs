@@ -12,8 +12,8 @@ using SistemaNutricion.Models;
 namespace SistemaNutricion.Migrations
 {
     [DbContext(typeof(SistemaNutricionDBcontext))]
-    [Migration("20240701204356_initial")]
-    partial class initial
+    [Migration("20240705220659_inital")]
+    partial class inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,24 @@ namespace SistemaNutricion.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("SistemaNutricion.Models.Dasboard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RegistroEjercicioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegistroEjercicioId");
+
+                    b.ToTable("Dasboard");
+                });
 
             modelBuilder.Entity("SistemaNutricion.Models.Ejercicio", b =>
                 {
@@ -105,6 +123,17 @@ namespace SistemaNutricion.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("SistemaNutricion.Models.Dasboard", b =>
+                {
+                    b.HasOne("SistemaNutricion.Models.Ejercicio", "RegistroEjercicio")
+                        .WithMany()
+                        .HasForeignKey("RegistroEjercicioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RegistroEjercicio");
                 });
 
             modelBuilder.Entity("SistemaNutricion.Models.RegistroEjercicio", b =>

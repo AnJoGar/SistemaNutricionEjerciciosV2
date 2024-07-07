@@ -64,7 +64,7 @@ export class AlimentosComponent implements OnInit {
   
   ngOnInit(): void { }
 
-  date = new FormControl(moment());
+  date = new FormControl(moment);
 
   navigateTo(route: string) {
     this.router.navigate([route]);

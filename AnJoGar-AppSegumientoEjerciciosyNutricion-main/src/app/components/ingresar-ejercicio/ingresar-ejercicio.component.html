@@ -33,10 +33,16 @@
   <div>
 
 
-    <form class="input" >
+    <form class="input" [formGroup]="formGroup" >
         <mat-form-field class="example-full-width custom-width">
           <mat-label>Ingrese ejercicio</mat-label>
-          <input matInput placeholder="" value="" class="input1" >
+          <input matInput placeholder="" class="input1" [matAutocomplete]="auto" formControlName="ejercicio" >
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+          (optionSelected)="ejercicioSeleccionado($event)" [displayWith]="displayEjercicio">
+          <mat-option *ngFor="let option of filteredEjericio" [value]="option">
+            {{option.nombre}}
+          </mat-option>
+        </mat-autocomplete>
         </mat-form-field>
         <div>
 

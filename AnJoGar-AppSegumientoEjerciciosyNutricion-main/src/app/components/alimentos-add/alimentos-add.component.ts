@@ -59,7 +59,7 @@ const ELEMENT_DATA: Alimento[] = [
 export class AlimentosAddComponent implements OnInit {
   displayedColumns: string[] = ['name', 'portion', 'quantity', 'grams', 'calories', 'carbohydrates', 'fats', 'proteins', 'sodium', 'sugar'];
   dataToDisplay: Alimento[] = [];
-  date = new FormControl(moment());
+  date = new FormControl(moment);
   dataSource = new ExampleDataSource(this.dataToDisplay);
   totals = this.calculateTotals();
   listaAlimentos: Alimento[] = [];

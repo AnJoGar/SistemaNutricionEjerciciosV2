@@ -11,20 +11,20 @@ namespace SistemaNutricion.DTO
         public double Sodio { get; set; }
         public double Azucar { get; set; }
 
-        public Alimento(int id, string nombre, string porcion, int cantidad, double gramos, double calorias, double carbohidratos, double grasas, double proteinas, double sodio, double azucar)
-        {
-            Id = id;
-            Nombre = nombre;
-            Porcion = porcion;
-            Cantidad = cantidad;
-            Gramos = gramos;
-            Calorias = calorias;
-            Carbohidratos = carbohidratos;
-            Grasas = grasas;
-            Proteinas = proteinas;
-            Sodio = sodio;
-            Azucar = azucar;
-        }
+        /* public AlimentoDTO(int id, string nombre, string porcion, int cantidad, double gramos, double calorias, double carbohidratos, double grasas, double proteinas, double sodio, double azucar)
+         {
+             Id = id;
+             Nombre = nombre;
+             Porcion = porcion;
+             Cantidad = cantidad;
+             Gramos = gramos;
+             Calorias = calorias;
+             Carbohidratos = carbohidratos;
+             Grasas = grasas;
+             Proteinas = proteinas;
+             Sodio = sodio;
+             Azucar = azucar;
+         }*/
 
     }
 }

@@ -28,13 +28,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<List<AlimentoDTO>>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _context.ListaAlimentos();
+                rsp.status = true;
+                rsp.value = await _context.ListaAlimentos();
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }
@@ -63,13 +63,13 @@ namespace SistemaNutricion.Controllers
             var rsp = new Response<AlimentoDTO>();
             try
             {
-                rsp.Status = true;
-                rsp.Value = await _context.CrearAlimento(alimento);
+                rsp.status = true;
+                rsp.value = await _context.CrearAlimento(alimento);
             }
             catch (Exception ex)
             {
-                rsp.Status = false;
-                rsp.Msg = ex.Message;
+                rsp.status = false;
+                rsp.msg = ex.Message;
             }
             return Ok(rsp);
         }

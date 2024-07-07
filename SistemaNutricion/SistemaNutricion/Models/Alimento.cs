@@ -11,7 +11,7 @@ namespace SistemaNutricion.Models
         public double Sodio { get; set; }
         public double Azucar { get; set; }
 
-        public Alimento(int id, string nombre, string porcion, int cantidad, double gramos, double calorias, double carbohidratos, double grasas, double proteinas, double sodio, double azucar)
+      /*  public Alimento(int id, string nombre, string porcion, int cantidad, double gramos, double calorias, double carbohidratos, double grasas, double proteinas, double sodio, double azucar)
         {
             Id = id;
             Nombre = nombre;
@@ -26,7 +26,7 @@ namespace SistemaNutricion.Models
             Azucar = azucar;
         }
 
-
+        */
 
     }
 }

@@ -22,6 +22,24 @@ namespace SistemaNutricion.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SistemaNutricion.Models.Dasboard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("RegistroEjercicioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegistroEjercicioId");
+
+                    b.ToTable("Dasboard");
+                });
+
             modelBuilder.Entity("SistemaNutricion.Models.Ejercicio", b =>
                 {
                     b.Property<int>("Id")
@@ -102,6 +120,17 @@ namespace SistemaNutricion.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("SistemaNutricion.Models.Dasboard", b =>
+                {
+                    b.HasOne("SistemaNutricion.Models.Ejercicio", "RegistroEjercicio")
+                        .WithMany()
+                        .HasForeignKey("RegistroEjercicioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RegistroEjercicio");
                 });
 
             modelBuilder.Entity("SistemaNutricion.Models.RegistroEjercicio", b =>

@@ -1,6 +1,6 @@
 ﻿namespace SistemaNutricion.DTO
 {
-    public class CosultarFechaDTO
+    public class ConsultarFechaDTO
     {
 
         public int Id { get; set; }

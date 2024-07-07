@@ -9,7 +9,7 @@
         //public String? RolDescripcion { get; set; }
         public string? Clave { get; set; }
         public int? EsActivo { get; set; }
-        public DateTime? Fech { get; set; }
+       // public DateTime? Fech { get; set; }
 
 
     }
