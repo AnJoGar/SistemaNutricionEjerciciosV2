@@ -1,101 +1,96 @@
 <header class="mat-elevation-z3" style="background-color: rgb(0, 31, 63)">
-    <div class="logo">
-      <img src="assets/fittechlogo.png" alt="Logo de la aplicación">
-      <div class="aplicacion-info">
-        <div class="tituloaplicacion_1">
-          <p>Sistema de seguimiento y nutrición</p>
-        </div>
-        <div class="tituloaplicacion_2">
-          <p>FitTech Genius</p>
-        </div>
+  <div class="logo">
+    <img src="assets/fittechlogo.png" alt="Logo de la aplicación">
+    <div class="aplicacion-info">
+      <div class="tituloaplicacion_1">
+        <p>Sistema de seguimiento y nutrición</p>
+      </div>
+      <div class="tituloaplicacion_2">
+        <p>FitTech Genius</p>
       </div>
     </div>
-  </header>
-  <div>
-
-    <section class="pestanas-section">
-        <div class="pestanas">
-          <a id="paginaPrincipalLink" (click)="navigateTo('/PaginaPrincipal')">Página principal</a>
-          <a id="alimentosLink" (click)="navigateTo('/Alimentos')">Alimentos</a>
-          <a id="ejercicioLink" (click)="navigateTo('/Ejercicio')">Ejercicios</a>
-          <a id="perfilLink" (click)="navigateTo('/Perfil')">Perfil</a>
-        </div>
-      </section>
   </div>
+</header>
+<div>
 
-
-
-  <div>
-<h1 class="title">Añadir</h1>
-
-  </div>
-
-  <div>
-
-
-    <form class="input" [formGroup]="formGroup" >
-        <mat-form-field class="example-full-width custom-width">
-          <mat-label>Ingrese ejercicio</mat-label>
-          <input matInput placeholder="" class="input1" [matAutocomplete]="auto" formControlName="ejercicio" >
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
-          (optionSelected)="ejercicioSeleccionado($event)" [displayWith]="displayEjercicio">
-          <mat-option *ngFor="let option of filteredEjericio" [value]="option">
-            {{option.nombre}}
-          </mat-option>
-        </mat-autocomplete>
-        </mat-form-field>
-        <div>
-
-          <button mat-flat-button color="primary" style="margin-left: 107%; position: relative;margin-top: -21%;">Buscar</button>
-        </div>
-        
-      </form>
-
-      <div>
-       
-      </div>
-
-<div class="secondary-title">
-
-  <h2>Selecciona ejercicio</h2>
+  <section class="pestanas-section">
+    <div class="pestanas">
+      <a id="paginaPrincipalLink" (click)="navigateTo('/PaginaPrincipal')">Página principal</a>
+      <a id="alimentosLink" (click)="navigateTo('/Alimentos')">Alimentos</a>
+      <a id="ejercicioLink" (click)="navigateTo('/Ejercicio')">Ejercicios</a>
+      <a id="perfilLink" (click)="navigateTo('/Perfil')">Perfil</a>
+    </div>
+  </section>
 </div>
-      <ul class="matching">
 
-        
+
+
+<div>
+  <h1 class="title">Añadir</h1>
+
+</div>
+
+<div>
+
+
+  <form class="input" [formGroup]="formRejercicio">
+    <mat-form-field class="example-full-width custom-width">
+      <mat-label>Ingrese ejercicio</mat-label>
+      <input matInput placeholder="" class="input1" [matAutocomplete]="auto" formControlName="ejercicio">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="ejercicioSeleccionado($event)"
+        [displayWith]="displayEjercicio">
+        <!--<mat-option *ngFor="let option of filteredEjericio" [value]="option">
+            {{option.nombre}}
+          </mat-option>-->
+      </mat-autocomplete>
+    </mat-form-field>
+    <div>
+
+      <button mat-flat-button color="primary" style="margin-left: 107%; position: relative;margin-top: -21%;"
+        (click)="mostrarEjercicioSeleccionado()">Seleccionar</button>
+    </div>
+
+  </form>
+
+  <div>
+
+  </div>
+
+  <div class="secondary-title">
+
+    <h2>Ejercicio Seleccionado</h2>
+  </div>
+  <ul class="matching">
+
+    <li *ngFor="let ejercicio of filteredEjericio" (click)="seleccionarEjercicio(ejercicio)">
+      {{ ejercicio.nombre }}
+    </li>
 
   </ul>
 
-
-<div class="calculo">
-
-  <h3 class="secondary-title">Añadir:</h3>
-  <p class="exercise-description">Correr</p>
-  <p>
-  </p>
-  <div >
-    <h3 class="secondary-title inline" style="display: inline;
-    margin-left: -9%;">¿Cuánto tiempo?</h3>
-   <mat-form-field class="text1">
-    <mat-label>Ingrese tiempo</mat-label>
-    <input matInput placeholder="" value="" class="text" >
-  </mat-form-field>
-    <div>
-      <h3 class="secondary-title inline" style="display: inline;
-      margin-left: -9%;">Calorías quemadas:</h3>
-      <mat-form-field class="text2">
-        <mat-label>Calculando</mat-label>
-        <input matInput placeholder="" value="" class="text" >
-      </mat-form-field>
-  
-    </div>
-    <div>
-      <button mat-flat-button color="primary" style="margin-left: 5%;">Buscar</button>
-
-    </div>
-    
-
+  <div class="calculo">
+    <h3 class="secondary-title">Añadir:</h3>
+    <p class="exercise-description">{{selectedEjercicio}}</p>
+    <form [formGroup]="formRejercicio">
+      <div>
+        <h3 class="secondary-title inline" style="display: inline; margin-left: -9%;">¿Cuánto tiempo?</h3>
+        <mat-form-field class="text1">
+          <mat-label>Ingrese tiempo</mat-label>
+          <input matInput placeholder="" class="text" formControlName="tiempoEnMinutos">
+        </mat-form-field>
+      </div>
+      <div>
+        <h3 class="secondary-title inline" style="display: inline; margin-left: -9%;">Calorías quemadas:</h3>
+        <mat-form-field class="text2">
+          <mat-label>Calculando</mat-label>
+          <input matInput placeholder="" class="text" [value]="CalQ|| 0">
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-flat-button color="primary" style="margin-left: 5%;" (click)="Registrar()">Registrar</button>
+        <button mat-flat-button color="primary" style="margin-left: 5%;" (click)="MostrarC()">CalcularCalorias</button>
+      </div>
+    </form>
   </div>
-  
+
 </div>
-  
-  </div>

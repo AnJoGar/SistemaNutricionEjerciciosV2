@@ -16,17 +16,7 @@
           <mat-icon matSuffix style="font-size: 24px; color: lightblue;">mail</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field appearance="outline">
-          <mat-label>Rol</mat-label>
-          <mat-icon matSuffix style="font-size: 24px; color: lightblue;">grade</mat-icon>
-          <mat-select formControlName="id">
-            <mat-option *ngFor="let item of listaRoles" [value]="item.id">
-              {{item.descripcion}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-grid-tile>
+     
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Contraseña</mat-label>
@@ -52,7 +42,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close color="warn">Volver</button>
-  <button mat-raised-button color="primary" [disabled]="formUsuario.invalid" (click)="agregarEditarUsuario()">
+  <button mat-raised-button color="primary"  (click)="agregarEditarUsuario()">
     {{accionBoton}}
   </button>
 </mat-dialog-actions>

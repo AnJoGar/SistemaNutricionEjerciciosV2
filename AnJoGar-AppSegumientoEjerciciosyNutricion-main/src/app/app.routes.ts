@@ -5,10 +5,11 @@ import{IngresarEjercicioComponent} from './components/ingresar-ejercicio/ingresa
 import{IngresarEjercicioFuerzaComponent} from './components/ingresar-ejercicio-fuerza/ingresar-ejercicio-fuerza.component';
 import { AlimentosComponent } from './components/alimentos/alimentos.component';
 import { AlimentosAddComponent } from './components/alimentos-add/alimentos-add.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 export const routes: Routes = [
-    {path:'', redirectTo: 'PaginaPrincipal', pathMatch: 'full'},
+    {path:'', redirectTo: 'login', pathMatch: 'full'},
     { path: 'PaginaPrincipal', component: PrincipalComponent },
     { path: 'Ejercicio', component: EjercicioComponent },
     { path: 'IngresarE', component: IngresarEjercicioComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'Alimentos', component: AlimentosComponent },
     { path: 'AlimentosAdd', component: AlimentosAddComponent},
     { path: 'AlimentosTotal', component: AlimentosAddComponent}
+    , { path: 'login', component: LoginComponent}
     
 ];
 

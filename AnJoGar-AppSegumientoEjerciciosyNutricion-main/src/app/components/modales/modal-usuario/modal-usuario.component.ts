@@ -78,9 +78,9 @@ export class ModalUsuarioComponent implements OnInit, AfterViewInit{
       this.formUsuario.patchValue({
         nombreApellido: this.usuarioEditar.nombreApellidos,
         correo: this.usuarioEditar.correo,
-        id: this.usuarioEditar.rolId,
+       // id: this.usuarioEditar.rolId,
         clave:this.usuarioEditar.clave,
-        esActivo: this.usuarioEditar.esActivo.toString()
+      //  esActivo: this.usuarioEditar..toString()
       })
     }
   }
@@ -93,9 +93,8 @@ export class ModalUsuarioComponent implements OnInit, AfterViewInit{
       id: this.usuarioEditar == null ? 0 : this.usuarioEditar.id,
       nombreApellidos: this.formUsuario.value.nombreApellido,
       correo: this.formUsuario.value.correo,
-      rolId: this.formUsuario.value.id,
-      rolDescripcion : "",
-      clave: this.formUsuario.value.clave,
+   
+     clave: this.formUsuario.value.clave,
       esActivo: parseInt(this.formUsuario.value.esActivo)
     }
     if (this.usuarioEditar==null) {

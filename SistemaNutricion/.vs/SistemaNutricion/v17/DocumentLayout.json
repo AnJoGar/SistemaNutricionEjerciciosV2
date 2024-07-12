@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|c:\\users\\andjo\\videos\\gestion\\proy3\\sistemanutricion\\sistemanutricion\\controllers\\ejerciciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|solutionrelative:sistemanutricion\\controllers\\ejerciciocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|c:\\users\\andjo\\videos\\gestion\\proy3\\sistemanutricion\\sistemanutricion\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|solutionrelative:sistemanutricion\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|c:\\users\\andjo\\videos\\gestion\\proy3\\sistemanutricion\\sistemanutricion\\dto\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|solutionrelative:sistemanutricion\\dto\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|c:\\users\\andjo\\videos\\gestion\\proy3\\sistemanutricion\\sistemanutricion\\dto\\ejerciciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{69D787DB-B497-4524-8131-970E9ED7EACD}|SistemaNutricion\\SistemaNutricion.csproj|solutionrelative:sistemanutricion\\dto\\ejerciciodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,55 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EjercicioController.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\Controllers\\EjercicioController.cs",
-              "RelativeDocumentMoniker": "SistemaNutricion\\Controllers\\EjercicioController.cs",
-              "ToolTip": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\Controllers\\EjercicioController.cs",
-              "RelativeToolTip": "SistemaNutricion\\Controllers\\EjercicioController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAgwDEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T07:48:04.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\Models\\Usuario.cs",
-              "RelativeDocumentMoniker": "SistemaNutricion\\Models\\Usuario.cs",
-              "ToolTip": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\Models\\Usuario.cs",
-              "RelativeToolTip": "SistemaNutricion\\Models\\Usuario.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAA1wAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T07:46:53.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsuarioDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\DTO\\UsuarioDTO.cs",
-              "RelativeDocumentMoniker": "SistemaNutricion\\DTO\\UsuarioDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\DTO\\UsuarioDTO.cs",
-              "RelativeToolTip": "SistemaNutricion\\DTO\\UsuarioDTO.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAsAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T07:42:53.898Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EjercicioDTO.cs",
-              "DocumentMoniker": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\DTO\\EjercicioDTO.cs",
-              "RelativeDocumentMoniker": "SistemaNutricion\\DTO\\EjercicioDTO.cs",
-              "ToolTip": "C:\\Users\\andjo\\Videos\\gestion\\proy3\\SistemaNutricion\\SistemaNutricion\\DTO\\EjercicioDTO.cs",
-              "RelativeToolTip": "SistemaNutricion\\DTO\\EjercicioDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T07:40:27.434Z"
             }
           ]
         }

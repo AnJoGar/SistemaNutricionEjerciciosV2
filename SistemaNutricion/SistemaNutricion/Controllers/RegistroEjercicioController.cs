@@ -37,6 +37,7 @@ namespace SistemaNutricion.Controllers
 
         // POST: api/RegistroEjercicios
         [HttpPost]
+        [Route("Guardar")]
         public async Task<IActionResult> Guardar([FromBody] RegistroEjercicioDTO usuario)
         {
             

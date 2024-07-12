@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   hidePassword = true;
   loading = false;
+  options2: Login[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -53,7 +54,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this._usuarioServicio.ObtenerUsuarios().subscribe({
+      next: (data) => {
+        console.log("adsadas",data)
+        if (data.status)
+          this.options2 = data.value;
+       
+      },
+      error: (e) => {
+      },
+      complete: () => {
+
+      }
+    })
+
+
+  }
 
   onLogin() {
     this.loading = true;
@@ -62,7 +80,7 @@ export class LoginComponent implements OnInit {
     const clave = this.formLogin.value.password;
     if (correo === "1" && clave === "1") {
       // Credenciales válidas, realizar el inicio de sesión
-      // this.router.navigate(['pages']); 
+       this.router.navigate(['PaginaPrincipal']); 
       //this.router.navigate(['pages/odontologo']); 
     } else {
       // Credenciales inválidas, mostrar mensaje de error
@@ -105,7 +123,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin2() {
-    if (this.formLogin.valid) {
+   
       this.loading = true;
       const request: Login = {
         correo: this.formLogin.value.email,
@@ -116,7 +134,7 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (data.status) {
             // this._rolNavegacion.guardarSesionUsuario(data.value);
-            this.router.navigate(['pages'])
+            this.router.navigate(['PaginaPrincipal'])
           } else {
             this._snackBar.open("No se encontraron coincidencias", 'Oops!', { duration: 3000 });
           }
@@ -128,8 +146,5 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       });
-    } else {
-      this.mostrarAlerta("Por favor, complete todos los campos correctamente", "Error");
-    }
+    } 
   }
-}

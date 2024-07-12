@@ -153,3 +153,15 @@ margin-left: 3%;
 .text2{
   margin-left: 2%;
 }
+.matching {
+  max-height: 200px; /* Limita la altura máxima */
+  overflow-y: auto;  /* Habilita el desplazamiento vertical */
+  border: 1px solid #ccc; /* Opcional: para darle un borde a la lista */
+  list-style-type: none; /* Opcional: eliminar los bullets del ul */
+}
+
+.matching li {
+  padding: 10px; /* Opcional: para agregar espacio alrededor de cada elemento de la lista */
+  border-bottom: 1px solid #ccc;
+  cursor: pointer; /* Opcional: para agregar una línea separadora entre los elementos */
+}
