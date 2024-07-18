@@ -6,6 +6,7 @@ using static SistemaNutricion.Repository.Implementacion.UsuarioRepositorio;
 using SistemaNutricion.Repository;
 using SistemaNutricion.Utilidades;
 using SistemaNutricion.Repository.Contratos;
+using static SistemaNutricion.Repository.Implementacion.AlimentoRepositorio;
 using static SistemaNutricion.Repository.Implementacion.EjercicioRepositorio;
 using SistemaNutricion.DTO;
 using SistemaNutricion.Repository.Implementacion;
@@ -49,7 +50,7 @@ builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     options.JsonSerializerOptions.WriteIndented = true;
     //options.JsonSerializerOptions.Converters.Add(new DateTimeConverter());*/
-    //  options.JsonSerializerOptions.PropertyNamingPolicy = null; // Desactivar la política de nombres de propiedad para respetar los nombres tal como están en el DTO
+    //  options.JsonSerializerOptions.PropertyNamingPolicy = null; // Desactivar la polï¿½tica de nombres de propiedad para respetar los nombres tal como estï¿½n en el DTO
     // Agregar un convertidor personalizado si es necesario
 
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -135,7 +136,7 @@ app.Run();
         }
         else
         {
-            return default; // Puedes manejar errores o retornar un valor predeterminado si la conversión falla
+            return default; // Puedes manejar errores o retornar un valor predeterminado si la conversiï¿½n falla
         }
     }
 

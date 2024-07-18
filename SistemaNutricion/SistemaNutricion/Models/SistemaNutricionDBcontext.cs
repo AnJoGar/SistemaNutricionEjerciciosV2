@@ -30,6 +30,12 @@ namespace SistemaNutricion.Models
         public DbSet<Ejercicio> Ejercicio { get; set; }
        
         public virtual DbSet<Ejercicio> Ejercicios { get; set; } = null!;
+
+        
+        public DbSet<Alimento> Alimento { get; set; }
+       
+        public virtual DbSet<Alimento> Alimentos { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -38,7 +44,10 @@ namespace SistemaNutricion.Models
                 .Property(u => u.FechaRegistro)
                 .HasDefaultValueSql("GETDATE()");
         }
+
         public DbSet<RegistroEjercicio> RegistroEjercicio { get; set; }
+
+        public DbSet<RegistroAlimento> RegistroAliemnto { get; set; }
 
         public DbSet<Dasboard> Dasboard { get; set; }
 

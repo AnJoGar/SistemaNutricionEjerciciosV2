@@ -85,9 +85,25 @@ namespace SistemaNutricion.Utilidades
 
             #endregion Reporte
 
+
+
+            #region Alimento
+            CreateMap<Alimento, AlimentoDTO>();
+            CreateMap<AlimentoDTO, Alimento>();
+            #endregion Alimento
+
+            #region RegistroAlimento
+            CreateMap<RegistroAlimento, RegistroAlimentoDTO>()
+                .ForMember(destino => destino.UsuarioNombre, opt => opt.MapFrom(origen => origen.Usuario.NombreApellidos))
+                .ForMember(destino => destino.AlimentoNombre, opt => opt.MapFrom(origen => origen.Alimento.Nombre));
+
+            CreateMap<RegistroAlimentoDTO, RegistroAlimento>()
+                .ForMember(destino => destino.Usuario, opt => opt.Ignore())
+                .ForMember(destino => destino.Alimento, opt => opt.Ignore());
+            #endregion RegistroAlimento
         }
 
-
+      
 
     }
 
