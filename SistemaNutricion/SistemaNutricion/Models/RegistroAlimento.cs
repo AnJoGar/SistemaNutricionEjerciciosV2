@@ -10,7 +10,7 @@ namespace SistemaNutricion.Models
         public int Cantidad { get; set; }
         public double Gramos { get; set; }
 
-        
+        public DateTime? FechaRegistro { get; set; }
         public Alimento Alimento { get; set; }
         public Usuario Usuario { get; set; }
 

@@ -22,6 +22,41 @@ namespace SistemaNutricion.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SistemaNutricion.Models.Alimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Azucar")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Calorias")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Carbohidratos")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Grasas")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Proteinas")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Sodio")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Alimento");
+                });
+
             modelBuilder.Entity("SistemaNutricion.Models.Dasboard", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +93,46 @@ namespace SistemaNutricion.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ejercicio");
+                });
+
+            modelBuilder.Entity("SistemaNutricion.Models.RegistroAlimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AlimentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("Gramos")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Porcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AlimentoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("RegistroAliemnto");
                 });
 
             modelBuilder.Entity("SistemaNutricion.Models.RegistroEjercicio", b =>
@@ -131,6 +206,25 @@ namespace SistemaNutricion.Migrations
                         .IsRequired();
 
                     b.Navigation("RegistroEjercicio");
+                });
+
+            modelBuilder.Entity("SistemaNutricion.Models.RegistroAlimento", b =>
+                {
+                    b.HasOne("SistemaNutricion.Models.Alimento", "Alimento")
+                        .WithMany()
+                        .HasForeignKey("AlimentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaNutricion.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alimento");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("SistemaNutricion.Models.RegistroEjercicio", b =>

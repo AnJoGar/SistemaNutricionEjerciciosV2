@@ -11,7 +11,8 @@ namespace SistemaNutricion.DTO
         public double Gramos { get; set; }
 
         
-       
+        public string UsuarioNombre { get; set; } // Nombre del usuario
+        public string AlimentoNombre { get; set; } // Nombre del alimento
 
     }
 }
