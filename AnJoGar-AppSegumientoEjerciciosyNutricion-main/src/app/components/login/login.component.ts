@@ -15,6 +15,7 @@ import { ModalUsuarioComponent } from '../modales/modal-usuario/modal-usuario.co
 import { UsuarioService } from '../../servicios/usuario.service';
 import { Login } from '../../interfaces/login';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -133,7 +134,8 @@ export class LoginComponent implements OnInit {
       this._usuarioServicio.ObtenerIniciarSesion(request).subscribe({
         next: (data) => {
           if (data.status) {
-            // this._rolNavegacion.guardarSesionUsuario(data.value);
+            this._usuarioServicio.guardarSesionUsuario(data.value);
+            console.log("usuario logeado",this._usuarioServicio.guardarSesionUsuario(data.value))
             this.router.navigate(['PaginaPrincipal'])
           } else {
             this._snackBar.open("No se encontraron coincidencias", 'Oops!', { duration: 3000 });

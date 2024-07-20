@@ -4,6 +4,7 @@ import { ServiciosEjeService } from '../../../app/servicios/servicios-eje.servic
 import { RegitrarEjercicioService } from '../../../app/servicios/regitrar-ejercicio.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ejercicio } from '../../../app/interfaces/ejercicio';
+import { UsuarioService } from '../../../app/servicios/usuario.service';
 
 import { Usuario } from '../../../app/interfaces/usuario';
 import { ConsultarFecha } from '../../../app/interfaces/consultar-fecha';
@@ -109,7 +110,8 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
 
     this.formGroup = this.fb.group({
 
-      fechaRegistro: ['', Validators.required]
+      fechaRegistro: ['', Validators.required],
+      fechainicio2:['', Validators.required]
     })
 
 
@@ -153,30 +155,10 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
 
       }
     })
-
-    this.fechainicio2 ="12/07/2024";
-    const _fechaInicio= this.fechainicio2;
-    this.serviciosEjeService.reporteEjercicio(
-      this.fechainicio2,
-      ).subscribe({
-        next: (data) => {
-          if (data.status) {
-            this.ELEMENT_DATA = data.value;
-            this.dataSource.data = data.value;
-            console.log("fcehasencotradas",data)
-          }
-          else {
-            this.ELEMENT_DATA = [];
-            this.dataSource.data = [];
-            this._snackBar.open("No se encontraron datos", 'Oops!', { duration: 2000 });
-          } 
-        },
-        error: (e) => {
-        },
-        complete: () => {
-        }
-      })
+  
+    
   }
+  
 
   navigateTo(route: string) {
     this.router.navigate([route]);
@@ -247,14 +229,11 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     this.router.navigate(['/IngresarEF']);
   }
 
-
-
-
   onSubmitForm() {
    
-    this.fechainicio2 ="12/07/2024";
+    this.fechainicio2 ="18/07/2024";
     //const _fechaInicio= this.fechainicio2;
-    const _fechaInicio: any = moment(this.formGroup.value.fechainicio2).format('DD/MM/YYYY')
+    const _fechaInicio: any = moment(this.formGroup.value.fechaRegistro).format('DD/MM/YYYY')
   
     if (_fechaInicio === "Invalid date" ) {
       this._snackBar.open("Debe ingresar ambas fechas", 'Oops!', { duration: 2000 });
@@ -297,9 +276,65 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
       
     })
   }
+  onDateChange(event: any) {
+    const selectedDate = event.value;
+    this.fechainicio2 = moment(selectedDate).format('DD/MM/YYYY');
+    this.filterDataByDate(this.fechainicio2);
+  }
+
+  subscribeToDateChanges() {
+    this.formGroup.get('fechaRegistro')?.valueChanges.subscribe(value => {
+      this.fechainicio2 = moment(value).format('DD/MM/YYYY');
+      this.filterDataByDate(this.fechainicio2);
+    });
+  }
+  filterDataByDate(date: any) {
+    const _fechaInicio = moment(this.formGroup.value.fechaRegistro, 'DD/MM/YYYY').format('DD/MM/YYYY');
+    if (_fechaInicio === "Invalid date") {
+      this._snackBar.open("Debe ingresar ambas fechas", 'Oops!', { duration: 2000 });
+      this.serviciosEjeService.ObtenerUsuarios2().subscribe({
+        next: (data) => {
+          if (data.status) {
+            this.ELEMENT_DATA = data.value;
+            this.dataSource.data = data.value;
+          } else {
+            this.ELEMENT_DATA = [];
+            this.dataSource.data = [];
+          }
+        },
+        error: (e) => {
+          console.error("Error obteniendo usuarios:", e);
+        }
+      });
+      return;
+    }
+
+    this.serviciosEjeService.reporteEjercicio(_fechaInicio).subscribe({
+      next: (data) => {
+        if (data.status) {
+          this.ELEMENT_DATA = data.value;
+          this.dataSource.data = data.value;
+        } else {
+          this.ELEMENT_DATA = [];
+          this.dataSource.data = [];
+          this._snackBar.open("No se encontraron datos", 'Oops!', { duration: 2000 });
+        }
+       
+       
+      
+      },
+      error: (e) => {
+        console.error("Error en reporteEjercicio:", e);
+      }
+    });
+  }
+mostrartodo(){
+
+  this.mostrarEjercicios()
 
 
-
+  
+}
 
 
 }
