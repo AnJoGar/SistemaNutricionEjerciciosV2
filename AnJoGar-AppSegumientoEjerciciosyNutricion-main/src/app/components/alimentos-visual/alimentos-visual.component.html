@@ -1,0 +1,52 @@
+<!-- Barra de búsqueda -->
+<mat-form-field appearance="fill">
+  <mat-label>Buscar</mat-label>
+  <input matInput [(ngModel)]="searchQuery" (ngModelChange)="filterTable()" placeholder="Buscar alimentos">
+</mat-form-field>
+<!-- Botón para cerrar el diálogo -->
+<button mat-raised-button color="primary" (click)="onCloseDialog()">Cerrar</button>
+
+
+<!-- Tabla de alimentos -->
+<mat-table [dataSource]="filteredAlimentos" class="mat-elevation-z8" [trackBy]="trackByFn">
+
+  <!-- Definición de columnas -->
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.nombre}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="calorias">
+    <mat-header-cell *matHeaderCellDef> Calorías </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.calorias}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="carbohidratos">
+    <mat-header-cell *matHeaderCellDef> Carbohidratos </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.carbohidratos}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="grasas">
+    <mat-header-cell *matHeaderCellDef> Grasas </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.grasas}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="proteinas">
+    <mat-header-cell *matHeaderCellDef> Proteínas </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.proteinas}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="sodio">
+    <mat-header-cell *matHeaderCellDef> Sodio </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.sodio}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="azucar">
+    <mat-header-cell *matHeaderCellDef> Azúcar </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.azucar}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
+</mat-table>
+

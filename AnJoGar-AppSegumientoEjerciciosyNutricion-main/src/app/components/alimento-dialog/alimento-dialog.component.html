@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Ingrese la Porción y los Gramos</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="alimentoForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Porción</mat-label>
+      <input matInput formControlName="porcion" type="number">
+      <mat-error *ngIf="alimentoForm.get('porcion')?.hasError('required')">
+        La porción es obligatoria.
+      </mat-error>
+      <mat-error *ngIf="alimentoForm.get('porcion')?.hasError('min')">
+        La porción debe ser mayor a 0.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Gramos</mat-label>
+      <input matInput formControlName="gramos" type="number">
+      <mat-error *ngIf="alimentoForm.get('gramos')?.hasError('required')">
+        Los gramos son obligatorios.
+      </mat-error>
+      <mat-error *ngIf="alimentoForm.get('gramos')?.hasError('min')">
+        Los gramos deben ser mayores a 0.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button (click)="onSave()">Guardar</button>
+</div>

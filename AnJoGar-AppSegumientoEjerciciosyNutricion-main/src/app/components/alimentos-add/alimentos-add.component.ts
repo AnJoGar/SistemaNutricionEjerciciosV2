@@ -1,132 +1,119 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {DataSource} from '@angular/cdk/collections';
-import {Observable, ReplaySubject} from 'rxjs';
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {provideMomentDateAdapter} from '@angular/material-moment-adapter';
-
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, ReplaySubject } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import * as _moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
-import {default as _rollupMoment} from 'moment';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { default as _rollupMoment } from 'moment';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { AlimentosService } from '../../../app/servicios/alimentos.service';
+import { CommonModule } from '@angular/common';
+
+import { MatDialog } from '@angular/material/dialog';
+import { AlimentosVisualComponent } from '../alimentos-visual/alimentos-visual.component';
+// Importa Alimento desde el archivo de interfaces
+import { Alimento } from 'src/app/interfaces/alimentos';
+
 
 
 const moment = _rollupMoment || _moment;
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
-
-export interface Alimento {
-  name: string;
-  portion: string;
-  quantity: number;
-  grams: number;
-  calories: number;
-  carbohydrates: number;
-  fats: number;
-  proteins: number;
-  sodium: number;
-  sugar: number;
+interface AlimentoConPorcionYGramos extends Alimento {
+  porcion: number;
+  gramos: number;
 }
-const ELEMENT_DATA: Alimento[] = [
-  {name: 'Manzana', portion: '1 unidad', quantity: 1, grams: 182, calories: 95, carbohydrates: 25, fats: 0.3, proteins: 0.5, sodium: 2, sugar: 19},
-  {name: 'Plátano', portion: '1 unidad', quantity: 1, grams: 118, calories: 105, carbohydrates: 27, fats: 0.3, proteins: 1.3, sodium: 1, sugar: 14},
-  {name: 'Arroz', portion: '1 taza', quantity: 1, grams: 158, calories: 206, carbohydrates: 45, fats: 0.4, proteins: 4.3, sodium: 1, sugar: 0},
-  {name: 'Pollo', portion: '100 gramos', quantity: 1, grams: 100, calories: 165, carbohydrates: 0, fats: 3.6, proteins: 31, sodium: 74, sugar: 0},
-  {name: 'Pan', portion: '1 rebanada', quantity: 1, grams: 28, calories: 79, carbohydrates: 15, fats: 1, proteins: 3, sodium: 146, sugar: 1.5},
-  // Agrega más alimentos según sea necesario
-];
-
-
 @Component({
   selector: 'app-alimentos-add',
   standalone: true,
-  imports: [MatButtonModule,
-    MatTableModule,
+  imports: [
+    MatButtonModule,
+    MatTableModule,CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule
+  ],
   templateUrl: './alimentos-add.component.html',
-  styleUrl: './alimentos-add.component.css',
-  
+  styleUrls: ['./alimentos-add.component.css'],
 })
 export class AlimentosAddComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'portion', 'quantity', 'grams', 'calories', 'carbohydrates', 'fats', 'proteins', 'sodium', 'sugar'];
-  dataToDisplay: Alimento[] = [];
-  date = new FormControl(moment);
-  dataSource = new ExampleDataSource(this.dataToDisplay);
+  displayedColumns: string[] = ['nombre', 'porcion', 'gramos', 'calorias', 'carbohidratos', 'grasas', 'proteinas', 'sodio', 'azucar'];
+  dataToDisplay: AlimentoConPorcionYGramos[] = [];
   totals = this.calculateTotals();
-  listaAlimentos: Alimento[] = [];
 
-  @Output() alimentosActualizados = new EventEmitter<Alimento[]>();
+  @Output() alimentosActualizados = new EventEmitter<AlimentoConPorcionYGramos[]>();
 
-  constructor() {}
+  constructor(public dialog: MatDialog, private alimentosService: AlimentosService) {}
 
-  ngOnInit(): void {}
-
-  onAlimentosActualizados(alimentos: Alimento[]) {
-    this.listaAlimentos = alimentos;
-    console.log('Lista de alimentos actualizada:', this.listaAlimentos);
+  ngOnInit(): void {
+    this.updateTotals();
   }
+
   addData() {
-    if (this.dataToDisplay.length === 0) {
-      this.dataToDisplay = [...ELEMENT_DATA];
-      this.dataSource.setData(this.dataToDisplay);
-      this.totals = this.calculateTotals(); // Recalcular totales
-    } else {
-      const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-      this.dataToDisplay = [...this.dataToDisplay, ELEMENT_DATA[randomElementIndex]];
-      this.dataSource.setData(this.dataToDisplay);
-      this.totals = this.calculateTotals(); // Recalcular totales
-    }
+    const dialogRef = this.dialog.open(AlimentosVisualComponent, {
+      width: '80%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.handleSelectedAlimentos(result);
+      }
+    });
+  }
+
+  handleSelectedAlimentos(selectedAlimentos: any[]): void {
+    console.log('Selected Alimentos:', selectedAlimentos); // Verifica los datos seleccionados
+
+    // Aquí asumimos que cada elemento de selectedAlimentos ya contiene las propiedades de porcion y gramos
+    const alimentosConPorcionYGramos: AlimentoConPorcionYGramos[] = selectedAlimentos.map(alimento => ({
+      ...alimento,
+      porcion: alimento.porcion,  // Usa el valor ingresado en el diálogo
+      gramos: alimento.gramos,    // Usa el valor ingresado en el diálogo
+      calorias: alimento.calorias * (alimento.porcion / alimento.gramos),
+      carbohidratos: alimento.carbohidratos * (alimento.porcion / alimento.gramos),
+      grasas: alimento.grasas * (alimento.porcion / alimento.gramos),
+      proteinas: alimento.proteinas * (alimento.porcion / alimento.gramos),
+      sodio: alimento.sodio * (alimento.porcion / alimento.gramos),
+      azucar: alimento.azucar * (alimento.porcion / alimento.gramos),
+    }));
+  
+    console.log('Alimentos Con Porción y Gramos:', alimentosConPorcionYGramos); // Verifica los datos procesados
+    this.dataToDisplay = [...this.dataToDisplay, ...alimentosConPorcionYGramos];
+    this.totals = this.calculateTotals(); // Recalcular totales
     this.emitirAlimentosActualizados();
   }
 
   removeData() {
     this.dataToDisplay = this.dataToDisplay.slice(0, -1);
-    this.dataSource.setData(this.dataToDisplay);
     this.totals = this.calculateTotals(); // Recalcular totales
     this.emitirAlimentosActualizados();
   }
 
   calculateTotals() {
     return this.dataToDisplay.reduce((totals, item) => {
-      totals.calories += item.calories;
-      totals.carbohydrates += item.carbohydrates;
-      totals.fats += item.fats;
-      totals.proteins += item.proteins;
-      totals.sodium += item.sodium;
-      totals.sugar += item.sugar;
+      totals.calorias += item.calorias;
+      totals.carbohidratos += item.carbohidratos;
+      totals.grasas += item.grasas;
+      totals.proteinas += item.proteinas;
+      totals.sodio += item.sodio;
+      totals.azucar += item.azucar;
       return totals;
-    }, { calories: 0, carbohydrates: 0, fats: 0, proteins: 0, sodium: 0, sugar: 0 });
+    }, { calorias: 0, carbohidratos: 0, grasas: 0, proteinas: 0, sodio: 0, azucar: 0 });
+  }
+  
+  updateTotals() {
+    this.totals = this.calculateTotals();
+    localStorage.setItem('totals', JSON.stringify(this.totals));
   }
 
   private emitirAlimentosActualizados() {
     this.alimentosActualizados.emit(this.dataToDisplay);
-  }
-}
-
-class ExampleDataSource extends DataSource<Alimento> {
-  private _dataStream = new ReplaySubject<Alimento[]>();
-
-  constructor(initialData: Alimento[]) {
-    super();
-    this.setData(initialData);
-  }
-
-  connect(): Observable<Alimento[]> {
-    return this._dataStream;
-  }
-
-  disconnect() {}
-
-  setData(data: Alimento[]) {
-    this._dataStream.next(data);
   }
 }

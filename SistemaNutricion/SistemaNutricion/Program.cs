@@ -26,6 +26,9 @@ builder.Services.AddDbContext<SistemaNutricionDBcontext>(options =>
 });
 builder.Services.AddTransient(typeof(IGenrericRepository<>), typeof(GenericRepository<>));
 AppContext.SetSwitch("Microsoft.Data.SqlClient.DisableCertificateValidation", true);
+
+  /*  AppContext.SetSwitch("Microsoft.Data.SqlClient.DisableCertificateValidation", true);*/
+
 builder.Services.AddCors(options => {
     options.AddPolicy("NuevaPolitica", app =>
     {
@@ -37,11 +40,13 @@ builder.Services.AddCors(options => {
 
 }
   );
+  
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperPerfil));
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEjercicioRepository, EjercicioRepository>();
 builder.Services.AddScoped<IRegistroEjercicioRepository, RegistroEjercicioRepositorio>();
+builder.Services.AddScoped<IAlimentoRepository, AlimentoRepositorio>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SistemaNutricion.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AlimentoController : ControllerBase
@@ -20,42 +21,44 @@ namespace SistemaNutricion.Controllers
             _context = context;
         }
 
-        // GET: api/Alimentos
+        // GET: api/Alimentos/Lista
         [HttpGet]
         [Route("Lista")]
-        public async Task<ActionResult> Lista()
+        public async Task<ActionResult<Response<List<AlimentoDTO>>>> Lista()
         {
             var rsp = new Response<List<AlimentoDTO>>();
             try
             {
                 rsp.status = true;
                 rsp.value = await _context.ListaAlimentos();
+                return Ok(rsp);
             }
             catch (Exception ex)
             {
                 rsp.status = false;
                 rsp.msg = ex.Message;
+                return StatusCode(500, rsp);
             }
-            return Ok(rsp);
         }
 
         // GET: api/Alimentos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AlimentoDTO>> GetAlimento(int id)
+        public async Task<ActionResult<Response<AlimentoDTO>>> GetAlimento(int id)
         {
             try
             {
                 var alimento = await _context.ObtenerPorIdAlimento(id);
                 if (alimento == null)
-                    return NotFound();
-                return Ok(alimento);
+                    return NotFound(new Response<AlimentoDTO> { status = false, msg = "Alimento no encontrado" });
+                return Ok(new Response<AlimentoDTO> { status = true, value = alimento });
             }
             catch
             {
-                return StatusCode(500, "Error al obtener el Alimento por ID");
+                return StatusCode(500, new Response<AlimentoDTO> { status = false, msg = "Error al obtener el Alimento por ID" });
             }
         }
 
+        // POST: api/Alimentos/Guardar
         [HttpPost]
         [Route("Guardar")]
         public async Task<IActionResult> Guardar([FromBody] AlimentoDTO alimento)
@@ -65,13 +68,14 @@ namespace SistemaNutricion.Controllers
             {
                 rsp.status = true;
                 rsp.value = await _context.CrearAlimento(alimento);
+                return Ok(rsp);
             }
             catch (Exception ex)
             {
                 rsp.status = false;
                 rsp.msg = ex.Message;
+                return StatusCode(500, rsp);
             }
-            return Ok(rsp);
         }
     }
 }

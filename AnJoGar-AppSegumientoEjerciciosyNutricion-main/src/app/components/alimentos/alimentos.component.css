@@ -4,20 +4,67 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: rgb(0, 31, 63);
-  color: white;
+  /* background-color: #2c3e50; */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-top: -2%;
+  margin-bottom: -2%;
 }
 
 .logo img {
-  max-width: 100%; /* Asegura que el logo se ajuste al contenedor */
-  height: auto; /* Permite que la altura se ajuste automáticamente */
-  margin-right: 10px; /* Espacio entre el logo y el texto */
+  max-width: 15%;
+  max-height: 15%;
+  margin-right: -2.5%;
+  margin-left: -3%;
 }
 
 .aplicacion-info {
+  color: rgb(87, 160, 204);
   font-family: 'Bebas Neue Pro', sans-serif;
   font-weight: bold;
-  font-size: 1.5em;
+  line-height: 0.7;
+  font-size: 3em;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tituloaplicacion_2 {
+  /* font-size: 1.8em; */
+  color: rgb(87, 160, 204);
+}
+
+.pestanas-section {
+  background-color: rgb(70, 130, 180);
+  overflow: hidden;
+}
+
+.pestanas {
+  display: flex;
+}
+
+.pestanas a {
+  float: left;
+  display: block;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Bebas Neue Pro', sans-serif;
+}
+
+.pestanas a:hover {
+  background-color: rgb(0, 31, 63);
+  color: #fff;
+}
+
+.pestanas a.active {
+  background-color: rgb(0, 31, 63);
+  color: #fff;
 }
 
 /* PESTAÑAS */

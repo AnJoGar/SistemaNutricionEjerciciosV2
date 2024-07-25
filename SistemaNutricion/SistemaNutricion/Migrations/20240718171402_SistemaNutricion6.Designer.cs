@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaNutricion.Models;
 
@@ -11,9 +12,11 @@ using SistemaNutricion.Models;
 namespace SistemaNutricion.Migrations
 {
     [DbContext(typeof(SistemaNutricionDBcontext))]
-    partial class SistemaNutricionDBcontextModelSnapshot : ModelSnapshot
+    [Migration("20240718171402_SistemaNutricion6")]
+    partial class SistemaNutricion6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,9 +119,11 @@ namespace SistemaNutricion.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Porcion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsuarioId")
