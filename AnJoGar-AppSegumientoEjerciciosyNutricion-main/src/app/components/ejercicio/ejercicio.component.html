@@ -23,20 +23,21 @@
       </section>
   </div>
 
-  <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmitForm()">
+  <form class="example-form" [formGroup]="formGroup">
     <div class="fecha">
       <mat-label class="labelFecha">Registro de ejercicios:</mat-label>
-      <mat-form-field appearance="fill" class="fecha2"  >
+      <mat-form-field appearance="fill" class="fecha2">
         <mat-label style="color: black;">Seleccione</mat-label>
-        <input matInput [matDatepicker]="picker1" showTime="false" formControlName="fechaRegistro" style="color: black;">
-        <mat-datepicker-toggle  matSuffix [for]="picker1"
-          style="font-size: 20px; color: lightblue; ">
-        </mat-datepicker-toggle>
+        <input matInput [matDatepicker]="picker1" showTime="false" formControlName="fechaRegistro" style="color: black;" (dateChange)="onDateChange($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker1" style="font-size: 20px; color: lightblue;"></mat-datepicker-toggle>
         <mat-datepicker #picker1 style="background-color: #11598B;"></mat-datepicker>
       </mat-form-field>
-      <button style="color: #11598B;" mat-button (click)="onSubmitForm()">Añadir</button>
+      <div>
+        <button mat-flat-button color="primary" style="margin-left: -880%"
+        (click)="mostrartodo()" >Todo</button>
+      </div>
     </div>
-
+   
   </form>
 
 

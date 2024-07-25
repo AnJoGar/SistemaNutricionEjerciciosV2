@@ -5,6 +5,7 @@ import { Usuario } from '../interfaces/usuario';
 import { ResponseApi } from '../interfaces/response-api';
 import { environment } from '../../environments/environment';
 import { Login } from '../interfaces/login';
+import { Sesion } from '../interfaces/sesion';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,21 @@ export class UsuarioService {
 
     return this.http.delete<ResponseApi>(`${this.urlApi}Eliminar/${id}`);
 
+  }
+  guardarSesionUsuario(usuarioSeccion:Sesion){
+    localStorage.setItem("usuario",JSON.stringify(usuarioSeccion));
+  }
+
+  obtenerSession(){
+    const dataCadena=localStorage.getItem("usuario");
+    const usuario =JSON.parse(dataCadena!);
+    return usuario;
+  }
+
+  eliminarSession(){
+    localStorage.removeItem("usuario");
+  }
+  getUserId(): number {
+    return parseInt(localStorage.getItem('Id') || '0', 10);
   }
 }

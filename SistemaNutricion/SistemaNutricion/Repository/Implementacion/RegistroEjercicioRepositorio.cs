@@ -164,10 +164,11 @@ namespace SistemaNutricion.Repository.Implementacion
                         .Include(p => p.Ejercicio)
                     
                         .Where(dv =>
-                            dv.FechaRegistro.Value.Date >= fech_Inicio.Date 
+                            dv.FechaRegistro.Value.Date == fech_Inicio.Date 
                       
                         ).ToListAsync();
                 }
+               
             }
             catch
             {

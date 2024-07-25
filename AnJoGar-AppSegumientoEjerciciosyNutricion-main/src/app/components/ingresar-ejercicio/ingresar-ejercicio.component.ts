@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiciosEjeService } from '../../../app/servicios/servicios-eje.service';
 import { RegitrarEjercicioService } from '../../../app/servicios/regitrar-ejercicio.service';
-
+import { UsuarioService } from '../../../app/servicios/usuario.service';
 import { Ejercicio } from '../../../app/interfaces/ejercicio';
 import { RegistrarEjercicio } from '../../../app/interfaces/registrar-ejercicio';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -94,13 +94,15 @@ export class IngresarEjercicioComponent {
   options3: RegistrarEjercicio[] = [];
   agregarEjercicio!: Ejercicio;
   agregarUsuario!: Usuario;
+  userId: number;
   constructor(private router: Router,
  //   @Inject(MAT_DIALOG_DATA) public usuarioEditar: Usuario,
     private fb: FormBuilder,
     private serviciosEjeService: ServiciosEjeService,
     private RegEjeService: RegitrarEjercicioService,
     private http: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private  usuarioService:UsuarioService,
     
   ) { 
 
@@ -172,8 +174,6 @@ export class IngresarEjercicioComponent {
             this.caloriasQuemadas = firstValue.caloriasQuemadas || 0;
             console.log("Calorias Quemadas Inicializadas:", this.caloriasQuemadas);
           }
-         
-         
 
         }
       },
@@ -183,7 +183,9 @@ export class IngresarEjercicioComponent {
 
       }
     })
-
+    const session = this.usuarioService.obtenerSession();
+   this.usuarioService.obtenerSession();
+    console.log('ID del usuario logueado:', session.id);
 
 
   }
@@ -254,6 +256,8 @@ MostrarC(){
 
 
   Registrar(){
+    const session = this.usuarioService.obtenerSession();
+  
     const tiempoEnMinutos = this.formRejercicio.value.tiempoEnMinutos;
     const ejercicio = this.formRejercicio.get('ejercicio').value;
     const ejercicioSeleccionado = this.formRejercicio.get('ejercicio').value;
@@ -268,14 +272,16 @@ MostrarC(){
 
 const _usuario: RegistrarEjercicio = {
   id: this.agregarRegistro == null ? 0 : this.agregarRegistro.id,
-      usuarioId: 1,
+      usuarioId: session.id,//this.usuarioService.getUserId(),
       ejercicioId: this.selectedEjercicioID,
       usuarioDescripcion: "",
       ejercicioDescripcion : "",
       tiempoEnMinutos: tiempoEnMinutos,
+     
       
       caloriasQuemadas: CalQ
     }
+  //  console.log("Tiempo en minutos ingresado:", this.usuarioService.getUserId());
     console.log("caloriasQ",this.caloriasQuemadas)
     console.log("kjkkkkkk",this.formRejercicio.value.tiempoEnMinutos)
     if (this.agregarRegistro==null) {
