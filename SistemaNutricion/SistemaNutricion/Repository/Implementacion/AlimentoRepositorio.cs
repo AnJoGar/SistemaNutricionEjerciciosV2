@@ -15,60 +15,66 @@ namespace SistemaNutricion.Repository.Implementacion
 {
     public class AlimentoRepositorio : IAlimentoRepository
     {
-        private readonly IGenrericRepository<Alimento> _alimentoRepositorio;
-        private readonly IMapper _mapper;
+          private readonly SistemaNutricionDBcontext _context;
 
-        public AlimentoRepositorio(IGenrericRepository<Alimento> alimentoRepositorio, IMapper mapper)
+        public AlimentoRepositorio(SistemaNutricionDBcontext context)
         {
-            _alimentoRepositorio = alimentoRepositorio;
-            _mapper = mapper;
+            _context = context;
         }
 
         public async Task<List<AlimentoDTO>> ListaAlimentos()
         {
-            try
+            var alimentos = await _context.Alimentos.ToListAsync();
+            return alimentos.Select(a => new AlimentoDTO
             {
-                var queryAlimento = await _alimentoRepositorio.Consultar();
-                var listaAlimento = queryAlimento.ToList();
-                return _mapper.Map<List<AlimentoDTO>>(listaAlimento);
-            }
-            catch
-            {
-                throw;
-            }
+                Id = a.Id,
+                Nombre = a.Nombre,
+                Calorias = a.Calorias,
+                Carbohidratos = a.Carbohidratos,
+                Grasas = a.Grasas,
+                Proteinas = a.Proteinas,
+                Sodio = a.Sodio,
+                Azucar = a.Azucar
+            }).ToList();
         }
 
         public async Task<AlimentoDTO> ObtenerPorIdAlimento(int id)
         {
-            try
+            var alimento = await _context.Alimentos.FindAsync(id);
+            if (alimento == null)
+                return null;
+
+            return new AlimentoDTO
             {
-                var alimentoEncontrado = await _alimentoRepositorio.Obtenerid(a => a.Id == id);
-                var alimento = alimentoEncontrado.FirstOrDefault();
-                if (alimento == null)
-                    throw new TaskCanceledException("Alimento no encontrado");
-                return _mapper.Map<AlimentoDTO>(alimento);
-            }
-            catch
-            {
-                throw;
-            }
+                Id = alimento.Id,
+                Nombre = alimento.Nombre,
+                Calorias = alimento.Calorias,
+                Carbohidratos = alimento.Carbohidratos,
+                Grasas = alimento.Grasas,
+                Proteinas = alimento.Proteinas,
+                Sodio = alimento.Sodio,
+                Azucar = alimento.Azucar
+            };
         }
 
         public async Task<AlimentoDTO> CrearAlimento(AlimentoDTO modelo)
         {
-            try
+            var alimento = new Alimento
             {
-                var alimentoCreado = await _alimentoRepositorio.Crear(_mapper.Map<Alimento>(modelo));
-                if (alimentoCreado.Id == 0)
-                    throw new TaskCanceledException("No se pudo crear el alimento");
-                var query = await _alimentoRepositorio.Consultar(a => a.Id == alimentoCreado.Id);
-                alimentoCreado = query.First();
-                return _mapper.Map<AlimentoDTO>(alimentoCreado);
-            }
-            catch
-            {
-                throw;
-            }
+                Nombre = modelo.Nombre,
+                Calorias = modelo.Calorias,
+                Carbohidratos = modelo.Carbohidratos,
+                Grasas = modelo.Grasas,
+                Proteinas = modelo.Proteinas,
+                Sodio = modelo.Sodio,
+                Azucar = modelo.Azucar
+            };
+
+            _context.Alimentos.Add(alimento);
+            await _context.SaveChangesAsync();
+
+            modelo.Id = alimento.Id;
+            return modelo;
         }
     }
 }

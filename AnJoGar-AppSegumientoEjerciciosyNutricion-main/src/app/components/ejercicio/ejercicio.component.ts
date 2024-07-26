@@ -82,6 +82,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   formGroup: FormGroup;
   options3: RegistrarEjercicio[] = [];
   options4: ConsultarFecha[] = [];
+  session:ConsultarFecha[];
   fechainicio2: string;
   ELEMENT_DATA: ConsultarFecha[] = [
   ];
@@ -131,27 +132,29 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
         //console.error('Error al llamar a la API:', error);
       }
     );
-    //this.mostrarEjercicios();
-   // this.mostrarEjercicios1();
-
-
-
-
-
-
-    this.Ejercicio()
-    //this.mostrarEjercicios1()
-
+ 
+    this.mostrarEjercicios
+    const session = this._rolUsuario.obtenerSession();
+    this.serviciosEjeService.ObtenerEjerciciosPorUsuario2(session.id).subscribe({
+      next: (data) => {
+        console.log("gec",data);
+        if (data.status)
+          this.dataSource.data = data.value;
+       
+        else
+          this._snackBar.open("No se encontraron datos", 'Oops!', { duration: 2000 });
+      },
+      error: (e) => {
+      },
+      complete: () => {
+      }
+    })
+ 
   }
   
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
-
-
-
-
-  
 
   ngAfterViewInit () {
     this.dataSource.paginator = this.paginator;
@@ -179,10 +182,12 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     })
   }
   
-  mostrarEjercicios1() {
-    this.serviciosEjeService.ObtenerUsuarios2().subscribe({
+ 
+  mostrarEjercicios3() {
+    const session = this._rolUsuario.obtenerSession();
+    this.serviciosEjeService.ObtenerEjerciciosPorUsuario2(session.id).subscribe({
       next: (data) => {
-      //  console.log("gec",data);
+        console.log("gec",data);
         if (data.status)
           this.dataSource.data = data.value;
        
@@ -196,23 +201,6 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     })
   }
 
-
-
-  Ejercicio() {
-    const session = this._rolUsuario.obtenerSession();
-    this.serviciosEjeService.ObtenerEjerciciosPorUsuario(session.id).subscribe({
-      next: (data) => {
-        console.log("datos", data); // Registra el objeto data completo para depuración
-        this.ELEMENT_DATA = data.value;
-        this.dataSource.data = this.ELEMENT_DATA;
-        // Asegúrate de que el objeto data y data.value existen
-      },
-      error: (e) => {
-        console.error("Error al obtener los datos:", e);
-        this._snackBar.open("Error al obtener los datos", 'Error', { duration: 2000 });
-      }
-    });
-  }
 
 
   

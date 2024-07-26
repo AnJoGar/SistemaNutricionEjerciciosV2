@@ -59,4 +59,9 @@ export class RegitrarEjercicioService {
       return this.http.get<ResponseApi>(`${this.urlApi}ByUserId/${id}`);
     }
 
+    ObtenerEjerciciosPorUsuario2(id: number): Observable<ResponseApi> {
+      return this.http.get<ResponseApi>(`${this.urlApi}ByUserId1/${id}`);
+    }
+
+
 }

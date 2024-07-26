@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Alimentos Guardados</h1>
+<div mat-dialog-content>
+  <ul>
+    <li *ngFor="let alimento of data">
+      {{ alimento.nombre }} - Porción: {{ alimento.porcion }}g, Gramos: {{ alimento.gramos }}g
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</div>

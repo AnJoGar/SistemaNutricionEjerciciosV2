@@ -34,6 +34,8 @@ namespace SistemaNutricion.Controllers
             }
         }
 
+     
+
         // GET: api/Ejercicios
         [HttpGet]
         [Route("Lista")]

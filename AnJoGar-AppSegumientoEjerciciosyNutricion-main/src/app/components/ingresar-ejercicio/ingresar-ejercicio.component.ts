@@ -183,6 +183,9 @@ export class IngresarEjercicioComponent {
 
       }
     })
+
+
+    
     const session = this.usuarioService.obtenerSession();
    this.usuarioService.obtenerSession();
     console.log('ID del usuario logueado:', session.id);

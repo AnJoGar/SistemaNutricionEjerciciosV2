@@ -18,6 +18,7 @@ namespace SistemaNutricion.Repository.Implementacion
 
         private readonly IGenrericRepository<Dasboard> _EjercicioRepositorio;
         private readonly IGenrericRepository<RegistroEjercicio> _EjercicioRepositorio1;
+        private readonly IGenrericRepository<RegistroEjercicio> _EjercicioRepositorio2;
         private readonly IMapper _mapper;
         private readonly ILogger<DasboardRepository> _logger;
 
@@ -111,6 +112,38 @@ namespace SistemaNutricion.Repository.Implementacion
                 throw;
             }
         }
+
+
+
+        public async Task<List<ConsultarFechaDTO>> obtenerPorIdConsultarFechaYej(int id)
+        {
+            try
+            {
+                var EjercicioEncontrado = await _EjercicioRepositorio2
+                    .Obtenerid(u => u.Usuario.Id == id);
+                var listaUsuario = EjercicioEncontrado.Include(re => re.Ejercicio)
+                    .Include(re => re.Usuario)
+                    .ToList();
+                var Ejercicio = listaUsuario.ToList();
+                if (Ejercicio == null)
+                    throw new TaskCanceledException("Usuario no encontrado");
+                return _mapper.Map<List<ConsultarFechaDTO>>(listaUsuario);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     }

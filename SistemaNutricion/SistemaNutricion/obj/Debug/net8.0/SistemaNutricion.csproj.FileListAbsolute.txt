@@ -277,3 +277,5 @@ C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\obj\Debug\
 C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\obj\Debug\net8.0\SistemaNutricion.pdb
 C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\obj\Debug\net8.0\SistemaNutricion.genruntimeconfig.cache
 C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\obj\Debug\net8.0\ref\SistemaNutricion.dll
+C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\bin\Debug\net8.0\package-lock.json
+C:\Users\andjo\Videos\gestion\proy3\SistemaNutricion\SistemaNutricion\bin\Debug\net8.0\package.json

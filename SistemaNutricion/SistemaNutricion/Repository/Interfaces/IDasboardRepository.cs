@@ -6,7 +6,7 @@ namespace SistemaNutricion.Repository.Interfaces
     {
         Task<DasboardDTO> listaDasboard(int id);
 
-
+        Task<List<ConsultarFechaDTO>> obtenerPorIdConsultarFechaYej(int id);
         Task<List<DasboardDTO>> listaDasboard1();
         Task<List<RegistroEjercicioDTO>> listaDasboard2();
 

@@ -18,14 +18,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-
+import { AlimentosVisualComponent } from '../alimentos-visual/alimentos-visual.component';
 import { AlimentosAddComponent } from '../alimentos-add/alimentos-add.component';
-import { Alimento } from '../alimentos-add/alimentos-add.component';
+import { Alimento } from '../../../app/interfaces/alimentos'; // Importación correcta
 import { AlimentosTotalComponent } from '../alimentos-total/alimentos-total.component';
 import { AppComponent } from '../../app.component';
 import { Router } from '@angular/router';
-
-
 const moment = _rollupMoment || _moment;
 
 // See the Moment.js docs for the meaning of these formats:
@@ -55,7 +53,7 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
-  AlimentosAddComponent, AlimentosTotalComponent],
+    AlimentosAddComponent, AlimentosTotalComponent, AlimentosVisualComponent],
 })
 export class AlimentosComponent implements OnInit {
 
