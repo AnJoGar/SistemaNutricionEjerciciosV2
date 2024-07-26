@@ -145,6 +145,22 @@ namespace SistemaNutricion.Controllers
             }
         }
 
+        [HttpGet("ByUserId/{id}")]
+        public async Task<ActionResult<RegistroEjercicioDTO>> GetByIdU(int id)
+        {
+            try
+            {
+                var odontologo = await _registroEjercicioService.obtenerPorIdUsuario(id);
+                if (odontologo == null)
+                    return NotFound();
+                return Ok(odontologo);
+            }
+            catch
+            {
+                return StatusCode(500, "Error al obtener el Odontólogo por ID");
+            }
+        }
+
 
 
 

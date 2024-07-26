@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RegistrarEjercicio } from '../interfaces/registrar-ejercicio';
+import { Dasborad} from '../interfaces/dasborad';
 import { ResponseApi } from '../interfaces/response-api';
 import { environment } from 'src/environments/environment';
 
@@ -49,6 +50,13 @@ export class RegitrarEjercicioService {
 
   reporteEjercicio(fechaInicio: string): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(`${this.urlApi}Reporte?fechaInicio=${fechaInicio}`);
+    }
+
+    obtenerDasboardId(id: number): Observable<Dasborad>{
+      return this.http.get<Dasborad>(`${this.urlApi}${id}`);
+    }
+    ObtenerEjerciciosPorUsuario(id: number): Observable<ResponseApi> {
+      return this.http.get<ResponseApi>(`${this.urlApi}ByUserId/${id}`);
     }
 
 }

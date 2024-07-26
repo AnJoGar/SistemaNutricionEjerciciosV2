@@ -40,7 +40,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrarEjercicio } from '../../../app/interfaces/registrar-ejercicio';
 import moment from "moment";
 import { ReactiveFormsModule } from '@angular/forms';
-
 export const MY_DATE_FORMATS = {
   parse: {
     dateInput: 'DD/MM/YYYY',
@@ -86,8 +85,9 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   fechainicio2: string;
   ELEMENT_DATA: ConsultarFecha[] = [
   ];
+  
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+ dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   displayedColumns: string[] = ['ejercicioDescripcion', 'tiempoEnMinutos', 'caloriasQuemadas'];
 
   displayedColumns1: string[] = [ 'Nombre', 'peso','series', 'repeticiones'];
@@ -97,12 +97,15 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   totalMinutos: number = 0;
   totalCaloriasw: number = 0;
   fechaFin2:any;
+  Usuario:string="";
+  correoUsuario:string="";
  
   constructor(private router: Router,
     private serviciosEjeService: RegitrarEjercicioService,
     private http: HttpClient,
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
+    private _rolUsuario:UsuarioService
    
     
    
@@ -122,44 +125,25 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     this.dataSource.paginator = this.paginator;
     this.serviciosEjeService.ObtenerUsuarios().subscribe(
       (response: ResponseApi) => {
-        console.log('Respuesta de la API:', response);
+       // console.log('Respuesta de la API:', response);
       },
       (error) => {
-        console.error('Error al llamar a la API:', error);
+        //console.error('Error al llamar a la API:', error);
       }
     );
-    this.mostrarEjercicios();
-    this.mostrarEjercicios1();
+    //this.mostrarEjercicios();
+   // this.mostrarEjercicios1();
 
 
-    this.serviciosEjeService.ObtenerUsuarios2().subscribe({
-      next: (data) => {
-        console.log("adsadas",data)
-        if (data.status){
-          this.options4 = data.value;
 
-          console.log("RegistrarEjercicio:", data); 
-          if (Array.isArray(data.value) && data.value.length > 0) {
-            const firstValue = data.value[2];
-            this.fechaFin2 = firstValue.fechaRegistro;  // Updated to use fechaReserva
-            console.log("FechaReserva:",  this.fechaFin2);
-          }
-         
-         
 
-        }
-      },
-      error: (e) => {
-      },
-      complete: () => {
 
-      }
-    })
-  
-    
+
+    this.Ejercicio()
+    //this.mostrarEjercicios1()
+
   }
   
-
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
@@ -167,6 +151,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
 
 
 
+  
 
   ngAfterViewInit () {
     this.dataSource.paginator = this.paginator;
@@ -174,10 +159,9 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
 
 
   getTotalMinutes(): number {
-    // Suma de minutos
-   // return this.dataSource.data.map(element => element.Minutos).reduce((acc, value) => acc + value, 0);
-    //return this.dataSource.data.map(element => element.Minutos).reduce((acc, value) => acc + value, 0);
-  return 1;
+    return this.dataSource.data
+    .map(element => element.tiempoEnMinutos)
+    .reduce((acc, value) => acc + value, 0);
   }
 
   mostrarEjercicios() {
@@ -198,7 +182,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   mostrarEjercicios1() {
     this.serviciosEjeService.ObtenerUsuarios2().subscribe({
       next: (data) => {
-        console.log("gec",data);
+      //  console.log("gec",data);
         if (data.status)
           this.dataSource.data = data.value;
        
@@ -211,11 +195,32 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
       }
     })
   }
+
+
+
+  Ejercicio() {
+    const session = this._rolUsuario.obtenerSession();
+    this.serviciosEjeService.ObtenerEjerciciosPorUsuario(session.id).subscribe({
+      next: (data) => {
+        console.log("datos", data); // Registra el objeto data completo para depuración
+        this.ELEMENT_DATA = data.value;
+        this.dataSource.data = this.ELEMENT_DATA;
+        // Asegúrate de que el objeto data y data.value existen
+      },
+      error: (e) => {
+        console.error("Error al obtener los datos:", e);
+        this._snackBar.open("Error al obtener los datos", 'Error', { duration: 2000 });
+      }
+    });
+  }
+
+
   
   getTotalCalories(): number {
-    // Suma de calorías
-   // return this.dataSource.data.map(element => element.Caloriasw).reduce((acc, value) => acc + value, 0);
-  return 3;
+    
+    return this.dataSource.data
+    .map(element => element.caloriasQuemadas)
+    .reduce((acc, value) => acc + value, 0);
   }
 
  
@@ -229,53 +234,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     this.router.navigate(['/IngresarEF']);
   }
 
-  onSubmitForm() {
-   
-    this.fechainicio2 ="18/07/2024";
-    //const _fechaInicio= this.fechainicio2;
-    const _fechaInicio: any = moment(this.formGroup.value.fechaRegistro).format('DD/MM/YYYY')
-  
-    if (_fechaInicio === "Invalid date" ) {
-      this._snackBar.open("Debe ingresar ambas fechas", 'Oops!', { duration: 2000 });
-      this.serviciosEjeService.ObtenerUsuarios2().subscribe({
-        next: (data) => {
-          if (data.status) {
-            this.ELEMENT_DATA = data.value;
-            this.dataSource.data = data.value;
-          } else {
-            this.ELEMENT_DATA = [];
-            this.dataSource.data = [];
-          }
-        },
-        error: (e) => {},
-        complete: () => {}
-      });
-      return;
-    }
 
-    this.serviciosEjeService.reporteEjercicio(
-      _fechaInicio,
-    ).subscribe({
-      next: (data) => {
-        console.log("fcehasencotradas",data)
-        if (data.status) {
-          this.ELEMENT_DATA = data.value;
-          this.dataSource.data = data.value;
-       
-        }
-        else {
-          this.ELEMENT_DATA = [];
-          this.dataSource.data = [];
-          this._snackBar.open("No se encontraron datos", 'Oops!', { duration: 2000 });
-        } 
-      },
-      error: (e) => {
-      },
-      complete: () => {
-      }
-      
-    })
-  }
   onDateChange(event: any) {
     const selectedDate = event.value;
     this.fechainicio2 = moment(selectedDate).format('DD/MM/YYYY');
@@ -331,9 +290,17 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
 mostrartodo(){
 
   this.mostrarEjercicios()
-
-
   
+}
+
+cerrarSesion(){
+
+
+  this._rolUsuario.eliminarSession()
+
+this.router.navigate(['login']);
+
+
 }
 
 

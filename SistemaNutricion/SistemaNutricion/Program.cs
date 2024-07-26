@@ -42,6 +42,7 @@ builder.Services.AddAutoMapper(typeof(AutoMapperPerfil));
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEjercicioRepository, EjercicioRepository>();
 builder.Services.AddScoped<IRegistroEjercicioRepository, RegistroEjercicioRepositorio>();
+builder.Services.AddScoped<IDasboardRepository, DasboardRepository>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
