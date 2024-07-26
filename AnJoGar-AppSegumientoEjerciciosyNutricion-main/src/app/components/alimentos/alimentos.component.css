@@ -145,3 +145,40 @@ header {
   text-align: center;
   padding: 10px 0;
 }
+.container {
+  padding: 20px;
+}
+
+.seccion {
+  margin-bottom: 20px;
+}
+
+.notification {
+  margin-top: 20px;
+}
+
+.example-card {
+  margin-top: 20px;
+}
+
+.example-sidenav-content {
+  margin-top: 20px;
+}
+
+.tabla-container {
+  margin-top: 20px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th, .tabla td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tabla th {
+  background-color: #f4f4f4;
+}
