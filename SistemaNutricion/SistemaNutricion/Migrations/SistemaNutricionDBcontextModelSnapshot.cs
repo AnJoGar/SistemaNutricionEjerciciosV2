@@ -68,9 +68,14 @@ namespace SistemaNutricion.Migrations
                     b.Property<int>("RegistroEjercicioId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RegistroEjercicioId");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Dasboard");
                 });
@@ -203,7 +208,15 @@ namespace SistemaNutricion.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SistemaNutricion.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("RegistroEjercicio");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("SistemaNutricion.Models.RegistroAlimento", b =>

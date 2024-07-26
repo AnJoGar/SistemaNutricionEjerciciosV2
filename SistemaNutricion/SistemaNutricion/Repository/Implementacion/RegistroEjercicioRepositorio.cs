@@ -73,6 +73,47 @@ namespace SistemaNutricion.Repository.Implementacion
             }
         }
 
+        public async Task<List<RegistroEjercicioDTO>> obtenerPorIdUsuario(int id)
+        {
+            try
+            {
+                var EjercicioEncontrado = await _EjercicioRepositorio
+                    .Obtenerid(u => u.Usuario.Id == id);
+                var listaUsuario = EjercicioEncontrado.Include(re => re.Ejercicio)
+                    .Include(re => re.Usuario)
+                    .ToList(); 
+                var Ejercicio = listaUsuario.ToList(); 
+               if (Ejercicio == null)
+                    throw new TaskCanceledException("Usuario no encontrado");
+                return _mapper.Map<List<RegistroEjercicioDTO>>(listaUsuario);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<ConsultarFechaDTO>> obtenerPorIdConsultarFechaYej(int id)
+        {
+            try
+            {
+                var EjercicioEncontrado = await _EjercicioRepositorio
+                    .Obtenerid(u => u.Usuario.Id == id);
+                var listaUsuario = EjercicioEncontrado.Include(re => re.Ejercicio)
+                    .Include(re => re.Usuario)
+                    .ToList();
+                var Ejercicio = listaUsuario.ToList();
+                if (Ejercicio == null)
+                    throw new TaskCanceledException("Usuario no encontrado");
+                return _mapper.Map<List<ConsultarFechaDTO>>(listaUsuario);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
 
         public async Task<RegistroEjercicioDTO> crearRegistroEjercicio(RegistroEjercicioDTO modelo)
         {

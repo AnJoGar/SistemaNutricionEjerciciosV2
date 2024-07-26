@@ -15,7 +15,7 @@ import * as FileSaver from 'file-saver';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { SharedService } from '../../../app/servicios/shared-service.service';
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
 import { AlimentoDialogComponent } from '../alimento-dialog/alimento-dialog.component';
 import { AlimentosGuardadosDialogComponent } from '../alimentos-guardados-dialog/alimentos-guardados-dialog.component';
 

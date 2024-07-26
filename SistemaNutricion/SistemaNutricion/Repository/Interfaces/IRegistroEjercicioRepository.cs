@@ -8,6 +8,8 @@ namespace SistemaNutricion.Repository.Interfaces
         Task<List<ConsultarFechaDTO>> listaRegistroEjercicio2();
 
         Task<RegistroEjercicioDTO> obtenerPorIdRegistroEjercicio(int id);
+        Task<List<ConsultarFechaDTO>> obtenerPorIdConsultarFechaYej(int id);
+        Task<List<RegistroEjercicioDTO>> obtenerPorIdUsuario(int id);
 
         Task<RegistroEjercicioDTO> crearRegistroEjercicio(RegistroEjercicioDTO modelo);
         Task<List<ConsultarFechaDTO>> ReporteEjercicio(string fechaInicio);

@@ -6,7 +6,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { UsuarioService } from '../../servicios/usuario.service';
+import { Login } from '../../interfaces/login';
+
+
 import { CalculoService } from 'src/app/servicios/calculo.service';
+
 
 @Component({
   selector: 'app-principal',
@@ -22,7 +28,11 @@ import { CalculoService } from 'src/app/servicios/calculo.service';
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent {
-  constructor(private router: Router, private calculoService: CalculoService) { }
+
+
+
+  constructor(private router: Router, private calculoService: CalculoService,private _rolUsuario:UsuarioService) { }
+
 
   navigateTo(route: string) {
     this.router.navigate([route]);
@@ -38,8 +48,8 @@ export class PrincipalComponent {
   pesoActual!: number;
   alturaActual!: number;
   edadActual!: number;
-
-
+  Usuario:string="";
+  correoUsuario:string="";
   //Variables para el cálculo calórico y de macros
   tasaMetabolicaBasal!: number;
   caloriasEstimadas!: number;
@@ -92,6 +102,17 @@ export class PrincipalComponent {
       return false;
     }
   }
+  ngOnInit(): void {
+
+  
+    const usuario =this._rolUsuario.obtenerSession();
+    if(usuario!=null){
+      this.correoUsuario=usuario.correo;
+
+    }
+  }
+
+
 
   validatePersonalDataForm(): boolean {
     const generoSelect = document.getElementById('genero') as HTMLSelectElement;
@@ -356,4 +377,18 @@ export class PrincipalComponent {
 
     this.router.navigate(['/Alimentos']);
   }
+
+  cerrarSesion(){
+
+
+    this._rolUsuario.eliminarSession()
+
+  this.router.navigate(['login']);
+
+
+  }
+
+
+
+
 }

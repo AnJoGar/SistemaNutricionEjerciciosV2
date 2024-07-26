@@ -31,8 +31,31 @@ namespace SistemaNutricion.Utilidades
                 .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas * src.TiempoEnMinutos));
             CreateMap<RegistroEjercicioDTO, RegistroEjercicio>()
                 .ForMember(destino => destino.Usuario, opt => opt.Ignore())
-                .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.CaloriasQuemadas));
-            #endregion
+
+              //    .ForMember(dest => dest.FechaRegistro, opt => opt.MapFrom(src => src.FechaRegistro))
+  .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.CaloriasQuemadas));
+
+            #endregion RegistroEjercicio
+
+
+
+            #region Dasboard
+            CreateMap<DasboardDTO, RegistroEjercicio>();
+            /*  .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.RegistroEjercicioId))
+             .ForMember(dest => dest.CaloriasQuemadas, opt => opt.MapFrom(src => src.RegistroEjercicioId))
+             .ForMember(dest => dest.UsuarioId, opt => opt.MapFrom(src => src.UsuarioId))
+             .ForMember(dest => dest.Usuario, opt => opt.MapFrom(src => src.UsuarioDescripcion));
+            */
+            CreateMap<RegistroEjercicio, DasboardDTO>()
+                .ForMember(dest => dest.RegistroEjercicioId, opt => opt.MapFrom(src => src.EjercicioId))
+                      .ForMember(dest => dest.RegistroEjercicioDescripcion, opt => opt.MapFrom(src => src.Ejercicio.caloriasQuemadas))
+                      .ForMember(dest => dest.UsuarioDescripcion, opt => opt.MapFrom(src => src.Usuario.NombreApellidos));
+            #endregion Dasboard
+
+
+               // .ForMember(destino => destino.CaloriasQuemadas, opt => opt.MapFrom(src => src.CaloriasQuemadas));
+           
+
 
             #region Reporte
             CreateMap<RegistroEjercicio, ConsultarFechaDTO>()
@@ -59,5 +82,11 @@ namespace SistemaNutricion.Utilidades
                 .ForMember(destino => destino.Alimento, opt => opt.Ignore());
             #endregion
         }
+
+
+
+        
+
+
     }
 }
