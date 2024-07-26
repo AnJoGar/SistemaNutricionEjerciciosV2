@@ -15,21 +15,21 @@
       <!-- Totales Row -->
       <tr>
         <td>Totales</td>
-        <td>180</td>
-        <td>43</td>
-        <td>0</td>
-        <td>3</td>
-        <td>0</td>
-        <td>3</td>
+        <td>{{ totals.calorias | number:'1.0-3' }}</td>
+        <td>{{ totals.carbohidratos | number:'1.0-3' }}</td>
+        <td>{{ totals.grasas | number:'1.0-3' }}</td>
+        <td>{{ totals.proteinas | number:'1.0-3' }}</td>
+        <td>{{ totals.sodio | number:'1.0-3' }}</td>
+        <td>{{ totals.azucar | number:'1.0-3' }}</td>
       </tr>
     
       <!-- Tu objetivo diario Row -->
       <tr>
         <td>Tu objetivo diario</td>
-        <td>1,310</td>
-        <td>164</td>
-        <td>44</td>
-        <td>66</td>
+        <td>{{proteinasEstimadas*16}}</td>
+        <td>{{carbohidratosEstimados}}</td>
+        <td>{{grasasEstimadas}}</td>
+        <td>{{proteinasEstimadas}}</td>
         <td>2,300</td>
         <td>49</td>
       </tr>
@@ -37,30 +37,14 @@
       <!-- Restantes Row -->
       <tr>
         <td>Restantes</td>
-        <td>1,130</td>
-        <td>121</td>
-        <td>44</td>
-        <td>63</td>
-        <td>2,300</td>
-        <td>46</td>
+        <td>{{ proteinasEstimadas*16 - totals.calorias | number:'1.0-3' }}</td>
+        <td>{{ carbohidratosEstimados - totals.carbohidratos | number:'1.0-3' }}</td>
+        <td>{{ grasasEstimadas - totals.grasas | number:'1.0-3' }}</td>
+        <td>{{ proteinasEstimadas - totals.proteinas | number:'1.0-3' }}</td>
+        <td>{{ 2300 - totals.sodio | number:'1.0-3' }}</td>
+        <td>{{ 49 - totals.azucar | number:'1.0-3' }}</td>
       </tr>
-      
     </table>
   </div>
 
-  <h1>Consumo de Agua</h1>
-  <mat-card class="example-card">
-    <img mat-card-image src="https://static.ferrovial.com/wp-content/uploads/sites/3/2015/03/13145815/agua.jpg">
-    <mat-card-content>
-      <p>Total de agua consumida hoy. Procura beber al menos vasos de agua hoy. Puedes añadir rápidamente tamaños comunes o introducir una cantidad personalizada.</p>
-    </mat-card-content>
-  </mat-card>
-  
-  <div class="example-sidenav-content">
-    <mat-form-field>
-      <mat-label>Consumo Diario</mat-label>
-      <input matInput value="8" #message>
-    </mat-form-field>
-    <button mat-stroked-button (click)="openSnackBar(message.value, 'Listo')">Añade el consumo</button>
-  </div>
 </div>

@@ -13,12 +13,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AlimentosService } from '../../../app/servicios/alimentos.service';
-import { CommonModule } from '@angular/common';
-
+import { AlimetotalService } from '../../../app/servicios/alimetotal.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AlimentosVisualComponent } from '../alimentos-visual/alimentos-visual.component';
 // Importa Alimento desde el archivo de interfaces
 import { Alimento } from 'src/app/interfaces/alimentos';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -48,9 +48,9 @@ export class AlimentosAddComponent implements OnInit {
   dataToDisplay: AlimentoConPorcionYGramos[] = [];
   totals = this.calculateTotals();
 
-  @Output() alimentosActualizados = new EventEmitter<AlimentoConPorcionYGramos[]>();
+  @Output() totalesActualizados = new EventEmitter<{ calorias: number; carbohidratos: number; grasas: number; proteinas: number; sodio: number; azucar: number; }>();
 
-  constructor(public dialog: MatDialog, private alimentosService: AlimentosService) {}
+  constructor(public dialog: MatDialog, private alimentosService: AlimentosService, private alimetotalService: AlimetotalService) {}
 
   ngOnInit(): void {
     this.updateTotals();
@@ -69,31 +69,28 @@ export class AlimentosAddComponent implements OnInit {
   }
 
   handleSelectedAlimentos(selectedAlimentos: any[]): void {
-    console.log('Selected Alimentos:', selectedAlimentos); // Verifica los datos seleccionados
-
-    // Aquí asumimos que cada elemento de selectedAlimentos ya contiene las propiedades de porcion y gramos
     const alimentosConPorcionYGramos: AlimentoConPorcionYGramos[] = selectedAlimentos.map(alimento => ({
       ...alimento,
-      porcion: alimento.porcion,  // Usa el valor ingresado en el diálogo
-      gramos: alimento.gramos,    // Usa el valor ingresado en el diálogo
-      calorias: alimento.calorias * (alimento.porcion / alimento.gramos),
-      carbohidratos: alimento.carbohidratos * (alimento.porcion / alimento.gramos),
-      grasas: alimento.grasas * (alimento.porcion / alimento.gramos),
-      proteinas: alimento.proteinas * (alimento.porcion / alimento.gramos),
-      sodio: alimento.sodio * (alimento.porcion / alimento.gramos),
-      azucar: alimento.azucar * (alimento.porcion / alimento.gramos),
+     // Ejemplo para Angular con TypeScript
+
+porcion: alimento.porcion,  // Usa el valor ingresado en el diálogo
+gramos: alimento.gramos,    // Usa el valor ingresado en el diálogo
+calorias: (alimento.calorias * (alimento.porcion / alimento.gramos))*1000,
+carbohidratos: (alimento.carbohidratos / 100) * alimento.gramos,
+grasas: (alimento.grasas / 100) * alimento.gramos,
+proteinas: (alimento.proteinas / 100) * alimento.gramos,
+sodio: (alimento.sodio / 100) * alimento.gramos,
+azucar: (alimento.azucar / 100) * alimento.gramos,
+
     }));
-  
-    console.log('Alimentos Con Porción y Gramos:', alimentosConPorcionYGramos); // Verifica los datos procesados
+
     this.dataToDisplay = [...this.dataToDisplay, ...alimentosConPorcionYGramos];
-    this.totals = this.calculateTotals(); // Recalcular totales
-    this.emitirAlimentosActualizados();
+    this.updateTotals(); // Recalcular y actualizar totales
   }
 
   removeData() {
     this.dataToDisplay = this.dataToDisplay.slice(0, -1);
-    this.totals = this.calculateTotals(); // Recalcular totales
-    this.emitirAlimentosActualizados();
+    this.updateTotals(); // Recalcular y actualizar totales
   }
 
   calculateTotals() {
@@ -109,11 +106,11 @@ export class AlimentosAddComponent implements OnInit {
   }
   
   updateTotals() {
-    this.totals = this.calculateTotals();
-    localStorage.setItem('totals', JSON.stringify(this.totals));
+    const totals = this.calculateTotals();
+    this.alimetotalService.resetearTotales(); // Resetea los totales antes de aplicar los nuevos
+    this.alimetotalService.actualizarTotales(totals); // Actualiza los totales con los nuevos valores
+    this.totalesActualizados.emit(totals); 
+    localStorage.setItem('totals', JSON.stringify(totals));
   }
 
-  private emitirAlimentosActualizados() {
-    this.alimentosActualizados.emit(this.dataToDisplay);
-  }
 }

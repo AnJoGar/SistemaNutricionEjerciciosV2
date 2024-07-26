@@ -32,32 +32,48 @@
     <nav></nav>
     <mat-form-field>
       <mat-label>Registro diarios</mat-label>
-      <input matInput [matDatepicker]="dp" [formControl]="date">
-      <mat-hint>Mes, Dia, Año</mat-hint>
+      <input matInput [matDatepicker]="dp" [formControl]="date" [max]="maxDate">
+      <mat-hint>Mes, Día, Año</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
       <mat-datepicker #dp></mat-datepicker>
+      
     </mat-form-field>
+  
+
+    <button mat-raised-button color="primary" (click)="registrarAlimentos()">Registrar Alimentos del Día</button>
+    <div class="example-sidenav-content">
+      <h3> Consumo Diario de Agua </h3>
+      <mat-form-field>
+        <mat-label>Vasos tomados</mat-label>
+        <input matInput [(ngModel)]="waterIntake">
+      </mat-form-field>
+      <button mat-stroked-button (click)="openSnackBar()">Añade el consumo</button>
+    </div>
+
   </h2> 
 </div>
  <div class="seccion">
-  <div class="sec">
-     <h1>Desayuno</h1>
-     <app-alimentos-add></app-alimentos-add>
+  <div class="seccion">
+    <div class="sec">
+      <h1>Desayuno</h1>
+      <app-alimentos-add (totalesActualizados)="actualizarTotales($event)"></app-alimentos-add>
       <h1>Almuerzo</h1>
-    <app-alimentos-add></app-alimentos-add>
-    <h1>Merienda</h1>
-    <app-alimentos-add></app-alimentos-add>
-    <h1>Aperativo</h1>
-    <app-alimentos-add></app-alimentos-add> </div>
-
+      <app-alimentos-add (totalesActualizados)="actualizarTotales($event)"></app-alimentos-add>
+      <h1>Merienda</h1>
+      <app-alimentos-add (totalesActualizados)="actualizarTotales($event)"></app-alimentos-add>
+      <h1>Aperativo</h1>
+      <app-alimentos-add (totalesActualizados)="actualizarTotales($event)"></app-alimentos-add>
+    </div>
+  
     <div class="sec2">
-      <h1>Totales</h1>  
-      <app-alimentos-total></app-alimentos-total>
+      <h1>Totales</h1>
+      <app-alimentos-total [totals]="totals"></app-alimentos-total>
+    </div>
   </div>
+  
+
 </div>
  
-
-
 
   <!-- Footer -->
   <footer class="footer">

@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CalculoService } from 'src/app/servicios/calculo.service';
 
 @Component({
   selector: 'app-principal',
@@ -21,7 +22,7 @@ import { Router } from '@angular/router';
   styleUrl: './principal.component.css'
 })
 export class PrincipalComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private calculoService: CalculoService) { }
 
   navigateTo(route: string) {
     this.router.navigate([route]);
@@ -291,12 +292,20 @@ export class PrincipalComponent {
     this.carbohidratosEstimados = (this.caloriasEstimadas * 0.50) / 4; // 50% de las calorías de carbohidratos
     this.grasasEstimadas = (this.caloriasEstimadas * 0.25) / 9; // 25% de las calorías de grasas
     this.proteinasEstimadas = (this.caloriasEstimadas * 0.25) / 4; // 25% de las calorías de proteínas
+   
     console.log(this.caloriasEstimadas);
-
+    this.calculoService.setCalculo(
+      this.caloriasEstimadas,
+      this.carbohidratosEstimados,
+      this.grasasEstimadas,
+      this.proteinasEstimadas
+    );
+    
     // Actualizar la interfaz con las calorías estimadas
     const caloriasNumeroDiv = document.querySelector('.calorias-numero');
     if (caloriasNumeroDiv) {
       caloriasNumeroDiv.textContent = this.caloriasEstimadas.toString();
+      this.calculoService.setCalculo2(this.caloriasEstimadas,);
       console.log(this.caloriasEstimadas.toString());
     }
 
@@ -305,6 +314,7 @@ export class PrincipalComponent {
       ObjetivoNumeroDiv.textContent = this.caloriasEstimadas.toString();
       console.log(this.caloriasEstimadas.toString());
     }
+    
 
   }
 
