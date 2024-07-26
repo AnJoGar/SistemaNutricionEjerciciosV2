@@ -117,9 +117,6 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
       fechaRegistro: ['', Validators.required],
       fechainicio2:['', Validators.required]
     })
-
-
-
   }
 
   ngOnInit(): void {
@@ -133,14 +130,12 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
       }
     );
  
-    this.mostrarEjercicios
+    
     const session = this._rolUsuario.obtenerSession();
-    this.serviciosEjeService.ObtenerEjerciciosPorUsuario2(session.id).subscribe({
+    this.serviciosEjeService.ObtenerUsuarios2().subscribe({
       next: (data) => {
-        console.log("gec",data);
         if (data.status)
           this.dataSource.data = data.value;
-       
         else
           this._snackBar.open("No se encontraron datos", 'Oops!', { duration: 2000 });
       },
@@ -151,6 +146,9 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
     })
  
   }
+
+
+
   
   navigateTo(route: string) {
     this.router.navigate([route]);
@@ -159,8 +157,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
   ngAfterViewInit () {
     this.dataSource.paginator = this.paginator;
   }
-
-
+  
   getTotalMinutes(): number {
     return this.dataSource.data
     .map(element => element.tiempoEnMinutos)
@@ -200,10 +197,7 @@ export class EjercicioComponent  implements AfterViewInit, OnInit{
       }
     })
   }
-
-
-
-  
+ 
   getTotalCalories(): number {
     
     return this.dataSource.data
